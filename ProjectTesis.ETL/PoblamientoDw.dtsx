@@ -11,8 +11,8 @@
   DTS:LocaleID="10250"
   DTS:ObjectName="PoblamientoDw"
   DTS:PackageType="5"
-  DTS:VersionBuild="68"
-  DTS:VersionGUID="{C1909769-3933-4440-8022-806B95C416A0}">
+  DTS:VersionBuild="70"
+  DTS:VersionGUID="{4C293A85-B6C0-46EB-BA2E-8EAE1C7BBCB1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -492,14 +492,14 @@ WHERE NRO_DOC IS NOT NULL</property>
                       UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
 Orbitum_Datawarehouse.dbo.Orden.Id as OrdenId,
 Orbitum_Datawarehouse.dbo.Producto.Id as ProductoId,
-Ventas_Clientes$.PRECIO as PrecioUnitario,
-Ventas_Clientes$.CANTIDAD as Cantidad,
-Ventas_Clientes$.DESCRIPCION as Nombre
+SUM(Ventas_Clientes$.PRECIO) as PrecioUnitario,
+sum(Ventas_Clientes$.CANTIDAD) as Cantidad
 FROM 
 Ventas_Clientes$
 INNER JOIN Orbitum_Datawarehouse.dbo.Producto ON Ventas_Clientes$.IDENTIFICADOR_PRODUCTO = Orbitum_Datawarehouse.dbo.Producto.Codigo
 INNER JOIN Orbitum_Datawarehouse.dbo.Orden ON Ventas_Clientes$.CODIGO_ORDEN = Orbitum_Datawarehouse.dbo.Orden.Codigo
-order by Orbitum_Datawarehouse.dbo.Orden.Id asc</property>
+GROUP BY Orbitum_Datawarehouse.dbo.Orden.Id,
+Orbitum_Datawarehouse.dbo.Producto.Id</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -571,16 +571,6 @@ order by Orbitum_Datawarehouse.dbo.Orden.Id asc</property>
                           lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Cantidad]"
                           name="Cantidad"
                           truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Nombre]"
-                          dataType="wstr"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
-                          length="150"
-                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Nombre]"
-                          name="Nombre"
-                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -600,11 +590,6 @@ order by Orbitum_Datawarehouse.dbo.Orden.Id asc</property>
                           refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Cantidad]"
                           dataType="r8"
                           name="Cantidad" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
-                          dataType="wstr"
-                          length="150"
-                          name="Nombre" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -632,12 +617,6 @@ order by Orbitum_Datawarehouse.dbo.Orden.Id asc</property>
                           dataType="r8"
                           lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Cantidad]"
                           name="Cantidad" />
-                        <outputColumn
-                          refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Nombre]"
-                          dataType="wstr"
-                          length="150"
-                          lineageId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Nombre]"
-                          name="Nombre" />
                         <outputColumn
                           refId="Package\Sequence Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -1813,7 +1792,7 @@ FROM     [Ranking_Productos$]</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{83922DFA-85AB-443D-BF30-85A3E87F24D5}"
-          SQLTask:SqlStatementSource="DELETE OrdenDetalle&#xA; &#xA;DBCC CHECKIDENT('OrdenDetalle', reseed,0)&#xA;&#xA;DELETE Orden&#xA;&#xA;DBCC CHECKIDENT('Orden', reseed,0)&#xA;&#xA;DELETE Producto&#xA;&#xA;DBCC CHECKIDENT('Producto', reseed,0)&#xA;&#xA;DELETE Cliente&#xA;&#xA;DBCC CHECKIDENT('Cliente', reseed,0)&#xA;&#xA;DELETE Empleado&#xA;&#xA;DBCC CHECKIDENT('Empleado', reseed,0)&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="DELETE OrdenDetalle&#xA; &#xA;--DBCC CHECKIDENT('OrdenDetalle', reseed,0)&#xA;&#xA;DELETE Orden&#xA;&#xA;DBCC CHECKIDENT('Orden', reseed,0)&#xA;&#xA;DELETE Producto&#xA;&#xA;DBCC CHECKIDENT('Producto', reseed,0)&#xA;&#xA;DELETE Cliente&#xA;&#xA;DBCC CHECKIDENT('Cliente', reseed,0)&#xA;&#xA;DELETE Empleado&#xA;&#xA;DBCC CHECKIDENT('Empleado', reseed,0)&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -2230,7 +2209,7 @@ FROM     [Ranking_Productos$]</property>
     design-time-name="Package\Sequence Container\Producto">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="170.4,41.6"
           Id="Package\Sequence Container\Producto\OLE DB Destination"
@@ -2270,9 +2249,7 @@ FROM     [Ranking_Productos$]</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2308,7 +2285,7 @@ FROM     [Ranking_Productos$]</property>
     design-time-name="Package\Sequence Container\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="149.6,41.6"
           Id="Package\Sequence Container\Data Flow Task\OLE DB Source"
@@ -2348,7 +2325,9 @@ FROM     [Ranking_Productos$]</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-29.895187117129,36.8117654437425,49.6189453125,11.2236328125"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
