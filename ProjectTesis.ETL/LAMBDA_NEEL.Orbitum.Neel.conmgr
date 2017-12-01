@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LAMBDA_NEEL.Orbitum.Neel"
+  DTS:DTSID="{D0EF0CC2-B3F0-4DD1-A904-1E1D29379D54}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=LAMBDA\NEEL;User ID=Neel;Initial Catalog=Orbitum;Provider=SQLNCLI11.1;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA9Hv0PU2FS0uMRABCiYLm5gAAAAACAAAAAAAQZgAAAAEAACAAAABw+C8LU+W70raDar1nTFlFY9Z34W0z8itHCcRFZ5QKZgAAAAAOgAAAAAIAACAAAAAf1+67ajJeNDSe+IMswGWdrH/ucZM7g60v/+c42/ushIAAAABI462KjYc8YHdC5xHDpTvTDObom31o2OAGs4lsinlYUMeE8uoD7YZfhOLP+M03EaVwKkGA8lSX55Sf78INgcfAtLB3f65cgUMPDFY57t5SqJEMJK/DB3ONip4MMEEyUFUbx0cmwAE1PzcbI+zPsoKldT4W3mrzh0CAoKSHD+VMY0AAAAA5IgMLJAo0Tw8Vcp5mrXcHy5A/nN43Xb+9Z12kNdmvlgWPsE3sLa5yVmDZVUFBSv2EWVt+xxqE8NM3/W96Kw9J</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

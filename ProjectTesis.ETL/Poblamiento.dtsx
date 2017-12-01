@@ -1,0 +1,1736 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/30/2017 3:40:47 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAMBDA"
+  DTS:CreatorName="LAMBDA\nelso"
+  DTS:DTSID="{46C8A5F3-A847-4F3B-8785-B00DF4164D10}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0800.98"
+  DTS:LocaleID="10250"
+  DTS:ObjectName="Poblamiento"
+  DTS:PackageType="5"
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{73DEA944-76F7-4736-9376-D10F3FFA07B8}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{F977E017-97EE-4B6E-87A2-FE65C25E03BC}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Dimension Cliente"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{2DAFAF02-D1D1-4B24-8C3F-672CB0871311}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Dimension Cliente"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\Dimension Cliente\Excel Source"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="Excel Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT NRO_DOC as Documento, CLIENTE as Nombre
+FROM     [Busqueda_Documentos$]
+WHERE NRO_DOC IS NOT NULL</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Dimension Cliente\Excel Source.Connections[OleDbConnection]"
+                      connectionManagerID="{10324E7C-E3FB-4D01-8A64-3EF1AB802C89}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Excel Connection Manager]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Dimension Cliente\Excel Source.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Cliente\Excel Source.Outputs[Excel Source Output].Columns[Documento]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Cliente\Excel Source.Outputs[Excel Source Output].ExternalColumns[Documento]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Dimension Cliente\Excel Source.Outputs[Excel Source Output].Columns[Documento]"
+                          name="Documento"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Cliente\Excel Source.Outputs[Excel Source Output].Columns[Nombre]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Cliente\Excel Source.Outputs[Excel Source Output].ExternalColumns[Nombre]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Dimension Cliente\Excel Source.Outputs[Excel Source Output].Columns[Nombre]"
+                          name="Nombre"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Cliente\Excel Source.Outputs[Excel Source Output].ExternalColumns[Documento]"
+                          dataType="wstr"
+                          length="255"
+                          name="Documento" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Cliente\Excel Source.Outputs[Excel Source Output].ExternalColumns[Nombre]"
+                          dataType="wstr"
+                          length="255"
+                          name="Nombre" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Dimension Cliente\Excel Source.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Cliente\Excel Source.Outputs[Excel Source Error Output].Columns[Documento]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Dimension Cliente\Excel Source.Outputs[Excel Source Error Output].Columns[Documento]"
+                          name="Documento" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Cliente\Excel Source.Outputs[Excel Source Error Output].Columns[Nombre]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Dimension Cliente\Excel Source.Outputs[Excel Source Error Output].Columns[Nombre]"
+                          name="Nombre" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Cliente\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Dimension Cliente\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Cliente\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Dimension Cliente\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Dimension Cliente\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Dim_Cliente]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Dimension Cliente\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="{52F746CF-0BE8-4D50-9370-826A199D1949}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LAMBDA_NEEL.Orbitum_Mart.Neel]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Dimension Cliente\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Dimension Cliente\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Documento]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Documento"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Cliente\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Documento]"
+                          lineageId="Package\Sequence Container\Dimension Cliente\Excel Source.Outputs[Excel Source Output].Columns[Documento]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Dimension Cliente\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nombre]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Nombre"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Cliente\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                          lineageId="Package\Sequence Container\Dimension Cliente\Excel Source.Outputs[Excel Source Output].Columns[Nombre]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Cliente\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cliente_Key]"
+                          dataType="i4"
+                          name="Cliente_Key" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Cliente\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Documento]"
+                          dataType="wstr"
+                          length="50"
+                          name="Documento" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Cliente\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                          dataType="wstr"
+                          length="100"
+                          name="Nombre" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Dimension Cliente\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\Dimension Cliente\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Cliente\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Dimension Cliente\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Cliente\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Dimension Cliente\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\Dimension Cliente.Paths[Excel Source Output]"
+                  endId="Package\Sequence Container\Dimension Cliente\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Excel Source Output"
+                  startId="Package\Sequence Container\Dimension Cliente\Excel Source.Outputs[Excel Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Dimension Empleado"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{F16D08FA-3DF6-493A-9F44-53099F12693F}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Dimension Empleado"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\Dimension Empleado\Excel Source"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="Excel Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT [USUA REG] as Usuario, VENDEDOR as Nombre
+FROM     [Busqueda_Documentos$]
+WHERE  [USUA REG] IS NOT NULL
+AND VENDEDOR IS NOT NULL</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Dimension Empleado\Excel Source.Connections[OleDbConnection]"
+                      connectionManagerID="{10324E7C-E3FB-4D01-8A64-3EF1AB802C89}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Excel Connection Manager]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Dimension Empleado\Excel Source.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Empleado\Excel Source.Outputs[Excel Source Output].Columns[Usuario]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Empleado\Excel Source.Outputs[Excel Source Output].ExternalColumns[Usuario]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Dimension Empleado\Excel Source.Outputs[Excel Source Output].Columns[Usuario]"
+                          name="Usuario"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Empleado\Excel Source.Outputs[Excel Source Output].Columns[Nombre]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Empleado\Excel Source.Outputs[Excel Source Output].ExternalColumns[Nombre]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Dimension Empleado\Excel Source.Outputs[Excel Source Output].Columns[Nombre]"
+                          name="Nombre"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Empleado\Excel Source.Outputs[Excel Source Output].ExternalColumns[Usuario]"
+                          dataType="wstr"
+                          length="255"
+                          name="Usuario" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Empleado\Excel Source.Outputs[Excel Source Output].ExternalColumns[Nombre]"
+                          dataType="wstr"
+                          length="255"
+                          name="Nombre" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Dimension Empleado\Excel Source.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Empleado\Excel Source.Outputs[Excel Source Error Output].Columns[Usuario]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Dimension Empleado\Excel Source.Outputs[Excel Source Error Output].Columns[Usuario]"
+                          name="Usuario" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Empleado\Excel Source.Outputs[Excel Source Error Output].Columns[Nombre]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Dimension Empleado\Excel Source.Outputs[Excel Source Error Output].Columns[Nombre]"
+                          name="Nombre" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Empleado\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Dimension Empleado\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Empleado\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Dimension Empleado\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Dimension Empleado\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Dim_Empleado]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Dimension Empleado\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="{52F746CF-0BE8-4D50-9370-826A199D1949}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LAMBDA_NEEL.Orbitum_Mart.Neel]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Dimension Empleado\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Dimension Empleado\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Usuario]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Usuario"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Empleado\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Usuario]"
+                          lineageId="Package\Sequence Container\Dimension Empleado\Excel Source.Outputs[Excel Source Output].Columns[Usuario]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Dimension Empleado\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nombre]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Nombre"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Empleado\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                          lineageId="Package\Sequence Container\Dimension Empleado\Excel Source.Outputs[Excel Source Output].Columns[Nombre]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Empleado\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Empleado_Key]"
+                          dataType="i4"
+                          name="Empleado_Key" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Empleado\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Usuario]"
+                          dataType="wstr"
+                          length="50"
+                          name="Usuario" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Empleado\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                          dataType="wstr"
+                          length="50"
+                          name="Nombre" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Dimension Empleado\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\Dimension Empleado\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Empleado\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Dimension Empleado\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Empleado\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Dimension Empleado\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\Dimension Empleado.Paths[Excel Source Output]"
+                  endId="Package\Sequence Container\Dimension Empleado\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Excel Source Output"
+                  startId="Package\Sequence Container\Dimension Empleado\Excel Source.Outputs[Excel Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Dimension Producto"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{912022C9-E97C-4983-85AB-0968FC57F71D}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Dimension Producto"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\Dimension Producto\Excel Source"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="Excel Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT CODIGO as Codigo, DESCRIPCION as Nombre, MARCA as Marca, GRUPO as Grupo, SUBGRUPO as SubGrupo
+FROM     [Ranking_Productos$]
+WHERE CODIGO IS NOT NULL
+AND MARCA IS NOT NULL</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Dimension Producto\Excel Source.Connections[OleDbConnection]"
+                      connectionManagerID="{10324E7C-E3FB-4D01-8A64-3EF1AB802C89}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Excel Connection Manager]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].Columns[Codigo]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].ExternalColumns[Codigo]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].Columns[Codigo]"
+                          name="Codigo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].Columns[Nombre]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].ExternalColumns[Nombre]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].Columns[Nombre]"
+                          name="Nombre"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].Columns[Marca]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].ExternalColumns[Marca]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].Columns[Marca]"
+                          name="Marca"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].Columns[Grupo]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].ExternalColumns[Grupo]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].Columns[Grupo]"
+                          name="Grupo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].Columns[SubGrupo]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].ExternalColumns[SubGrupo]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].Columns[SubGrupo]"
+                          name="SubGrupo"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].ExternalColumns[Codigo]"
+                          dataType="wstr"
+                          length="255"
+                          name="Codigo" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].ExternalColumns[Nombre]"
+                          dataType="wstr"
+                          length="255"
+                          name="Nombre" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].ExternalColumns[Marca]"
+                          dataType="wstr"
+                          length="255"
+                          name="Marca" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].ExternalColumns[Grupo]"
+                          dataType="wstr"
+                          length="255"
+                          name="Grupo" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].ExternalColumns[SubGrupo]"
+                          dataType="wstr"
+                          length="255"
+                          name="SubGrupo" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Error Output].Columns[Codigo]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Error Output].Columns[Codigo]"
+                          name="Codigo" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Error Output].Columns[Nombre]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Error Output].Columns[Nombre]"
+                          name="Nombre" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Error Output].Columns[Marca]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Error Output].Columns[Marca]"
+                          name="Marca" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Error Output].Columns[Grupo]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Error Output].Columns[Grupo]"
+                          name="Grupo" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Error Output].Columns[SubGrupo]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Error Output].Columns[SubGrupo]"
+                          name="SubGrupo" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Dimension Producto\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Dim_Producto]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="{52F746CF-0BE8-4D50-9370-826A199D1949}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LAMBDA_NEEL.Orbitum_Mart.Neel]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Codigo]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Codigo"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Codigo]"
+                          lineageId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].Columns[Codigo]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nombre]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Nombre"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                          lineageId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].Columns[Nombre]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Marca]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Marca"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Marca]"
+                          lineageId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].Columns[Marca]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Grupo]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Grupo"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Grupo]"
+                          lineageId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].Columns[Grupo]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SubGrupo]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="SubGrupo"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SubGrupo]"
+                          lineageId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output].Columns[SubGrupo]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Producto_Key]"
+                          dataType="i4"
+                          name="Producto_Key" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Codigo]"
+                          dataType="wstr"
+                          length="35"
+                          name="Codigo" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                          dataType="wstr"
+                          length="150"
+                          name="Nombre" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Marca]"
+                          dataType="wstr"
+                          length="50"
+                          name="Marca" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Grupo]"
+                          dataType="wstr"
+                          length="50"
+                          name="Grupo" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SubGrupo]"
+                          dataType="wstr"
+                          length="50"
+                          name="SubGrupo" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\Dimension Producto.Paths[Excel Source Output]"
+                  endId="Package\Sequence Container\Dimension Producto\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Excel Source Output"
+                  startId="Package\Sequence Container\Dimension Producto\Excel Source.Outputs[Excel Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Dimension Tiempo"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{2EB9BDC5-6314-4A30-A93A-11392F8F58D6}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Dimension Tiempo"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\Dimension Tiempo\Excel Source"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="Excel Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT [FECHA EMISION] as Fecha,
+Year([FECHA EMISION]) as Año,
+Month([FECHA EMISION]) as Mes,
+Day([FECHA EMISION]) as Dia,
+Hour([FECHA EMISION]) as Hora,
+Minute([FECHA EMISION]) as Minuto
+FROM [Busqueda_Documentos$]</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Connections[OleDbConnection]"
+                      connectionManagerID="{10324E7C-E3FB-4D01-8A64-3EF1AB802C89}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Excel Connection Manager]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].Columns[Fecha]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].ExternalColumns[Fecha]"
+                          lineageId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].Columns[Fecha]"
+                          name="Fecha"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].Columns[Año]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].ExternalColumns[Año]"
+                          lineageId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].Columns[Año]"
+                          name="Año"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].Columns[Mes]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].ExternalColumns[Mes]"
+                          lineageId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].Columns[Mes]"
+                          name="Mes"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].Columns[Dia]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].ExternalColumns[Dia]"
+                          lineageId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].Columns[Dia]"
+                          name="Dia"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].Columns[Hora]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].ExternalColumns[Hora]"
+                          lineageId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].Columns[Hora]"
+                          name="Hora"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].Columns[Minuto]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].ExternalColumns[Minuto]"
+                          lineageId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].Columns[Minuto]"
+                          name="Minuto"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].ExternalColumns[Fecha]"
+                          dataType="date"
+                          name="Fecha" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].ExternalColumns[Año]"
+                          dataType="i2"
+                          name="Año" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].ExternalColumns[Mes]"
+                          dataType="i2"
+                          name="Mes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].ExternalColumns[Dia]"
+                          dataType="i2"
+                          name="Dia" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].ExternalColumns[Hora]"
+                          dataType="i2"
+                          name="Hora" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].ExternalColumns[Minuto]"
+                          dataType="i2"
+                          name="Minuto" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Error Output].Columns[Fecha]"
+                          dataType="date"
+                          lineageId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Error Output].Columns[Fecha]"
+                          name="Fecha" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Error Output].Columns[Año]"
+                          dataType="i2"
+                          lineageId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Error Output].Columns[Año]"
+                          name="Año" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Error Output].Columns[Mes]"
+                          dataType="i2"
+                          lineageId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Error Output].Columns[Mes]"
+                          name="Mes" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Error Output].Columns[Dia]"
+                          dataType="i2"
+                          lineageId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Error Output].Columns[Dia]"
+                          name="Dia" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Error Output].Columns[Hora]"
+                          dataType="i2"
+                          lineageId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Error Output].Columns[Hora]"
+                          name="Hora" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Error Output].Columns[Minuto]"
+                          dataType="i2"
+                          lineageId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Error Output].Columns[Minuto]"
+                          name="Minuto" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Dim_Tiempo]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="{52F746CF-0BE8-4D50-9370-826A199D1949}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LAMBDA_NEEL.Orbitum_Mart.Neel]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Fecha]"
+                          cachedDataType="date"
+                          cachedName="Fecha"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fecha]"
+                          lineageId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].Columns[Fecha]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Año]"
+                          cachedDataType="i2"
+                          cachedName="Año"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Año]"
+                          lineageId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].Columns[Año]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Mes]"
+                          cachedDataType="i2"
+                          cachedName="Mes"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Mes]"
+                          lineageId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].Columns[Mes]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Dia]"
+                          cachedDataType="i2"
+                          cachedName="Dia"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Dia]"
+                          lineageId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].Columns[Dia]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Hora]"
+                          cachedDataType="i2"
+                          cachedName="Hora"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Hora]"
+                          lineageId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].Columns[Hora]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Minuto]"
+                          cachedDataType="i2"
+                          cachedName="Minuto"
+                          externalMetadataColumnId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Minuto]"
+                          lineageId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output].Columns[Minuto]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_Key]"
+                          dataType="i4"
+                          name="Tiempo_Key" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fecha]"
+                          dataType="dbTimeStamp"
+                          name="Fecha" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Año]"
+                          dataType="i4"
+                          name="Año" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Mes]"
+                          dataType="i4"
+                          name="Mes" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Dia]"
+                          dataType="i4"
+                          name="Dia" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Hora]"
+                          dataType="i4"
+                          name="Hora" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Minuto]"
+                          dataType="i4"
+                          name="Minuto" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\Dimension Tiempo.Paths[Excel Source Output]"
+                  endId="Package\Sequence Container\Dimension Tiempo\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Excel Source Output"
+                  startId="Package\Sequence Container\Dimension Tiempo\Excel Source.Outputs[Excel Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Tarea Ejecutar SQL"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{BB6BDEF6-ECB4-4B25-A639-58E94D14D1FE}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tarea Ejecutar SQL"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{52F746CF-0BE8-4D50-9370-826A199D1949}"
+          SQLTask:SqlStatementSource="&#xA;DELETE Fac_Ventas&#xA; &#xA;DELETE Dim_Empleado&#xA;&#xA;DBCC CHECKIDENT('Dim_Empleado', reseed,0)&#xA;&#xA;DELETE Dim_Tiempo&#xA;&#xA;DBCC CHECKIDENT('Dim_Tiempo', reseed,0)&#xA;&#xA;DELETE Dim_Cliente&#xA;&#xA;DBCC CHECKIDENT('Dim_Cliente', reseed,0)&#xA;&#xA;DELETE Dim_Producto&#xA;&#xA;DBCC CHECKIDENT('Dim_Producto', reseed,0)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{86411237-EAC6-4E92-8037-E37487AF25AD}"
+      DTS:From="Package\Tarea Ejecutar SQL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Sequence Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Sequence Container\Dimension Cliente"
+          TopLeft="38.4000012942723,97.0352977897882" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Sequence Container\Dimension Empleado"
+          TopLeft="253.828576391571,101.458827218712" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\Sequence Container\Dimension Producto"
+          TopLeft="38.6285757784942,32.3294147762049" />
+        <NodeLayout
+          Size="165.6,41.6"
+          Id="Package\Sequence Container\Dimension Tiempo"
+          TopLeft="255.771436619272,33.5529442051291" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="468,200"
+          Size="468,243.2"
+          Id="Package\Sequence Container"
+          TopLeft="37.7142863565563,121.741178177962" />
+        <NodeLayout
+          Size="169.6,41.6"
+          Id="Package\Tarea Ejecutar SQL"
+          TopLeft="114.285716231988,23.8588238640228" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="199.085716231988,65.4588238640228">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="72.6285701245683,56.2823543139392"
+              Start="0,0"
+              End="72.6285701245683,48.7823543139392">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.1411771569696" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.1411771569696"
+                    Point2="0,28.1411771569696"
+                    Point3="4,28.1411771569696" />
+                  <mssgle:LineSegment
+                    End="68.6285701245683,28.1411771569696" />
+                  <mssgle:CubicBezierSegment
+                    Point1="68.6285701245683,28.1411771569696"
+                    Point2="72.6285701245683,28.1411771569696"
+                    Point3="72.6285701245683,32.1411771569696" />
+                  <mssgle:LineSegment
+                    End="72.6285701245683,48.7823543139392" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Dimension Cliente">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="138.4,41.6"
+          Id="Package\Sequence Container\Dimension Cliente\Excel Source"
+          TopLeft="311.2,178.4" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Sequence Container\Dimension Cliente\OLE DB Destination"
+          TopLeft="309.6,275.2" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Dimension Cliente.Paths[Excel Source Output]"
+          TopLeft="380.4,220">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.4,55.1999999999999"
+              Start="0,0"
+              End="14.4,47.6999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.6" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.6"
+                    Point2="0,27.6"
+                    Point3="4,27.6" />
+                  <mssgle:LineSegment
+                    End="10.4,27.6" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.4,27.6"
+                    Point2="14.4,27.6"
+                    Point3="14.4,31.6" />
+                  <mssgle:LineSegment
+                    End="14.4,47.6999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Dimension Cliente\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Dimension Cliente\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Dimension Empleado">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="138.4,41.6"
+          Id="Package\Sequence Container\Dimension Empleado\Excel Source"
+          TopLeft="330.4,160.8" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Sequence Container\Dimension Empleado\OLE DB Destination"
+          TopLeft="331.2,268" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Dimension Empleado.Paths[Excel Source Output]"
+          TopLeft="399.6,202.4">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16.8,65.6"
+              Start="0,0"
+              End="16.8,58.1">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.8" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.8"
+                    Point2="0,32.8"
+                    Point3="4,32.8" />
+                  <mssgle:LineSegment
+                    End="12.8,32.8" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.8,32.8"
+                    Point2="16.8,32.8"
+                    Point3="16.8,36.8" />
+                  <mssgle:LineSegment
+                    End="16.8,58.1" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Dimension Empleado\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Dimension Empleado\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Dimension Producto">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="138.4,41.6"
+          Id="Package\Sequence Container\Dimension Producto\Excel Source"
+          TopLeft="309.714290988689,132.75294303828" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Sequence Container\Dimension Producto\OLE DB Destination"
+          TopLeft="301.714290852449,221.458826635288" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Dimension Producto.Paths[Excel Source Output]"
+          TopLeft="382.914290920569,174.35294303828">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.1058835970076"
+              Start="0,0"
+              End="0,39.6058835970076">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.6058835970076" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Dimension Producto\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Dimension Producto\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Dimension Tiempo">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="138.4,41.6"
+          Id="Package\Sequence Container\Dimension Tiempo\Excel Source"
+          TopLeft="355.2,152" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Sequence Container\Dimension Tiempo\OLE DB Destination"
+          TopLeft="358.4,273.2" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Dimension Tiempo.Paths[Excel Source Output]"
+          TopLeft="424.4,193.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19.2,79.6"
+              Start="0,0"
+              End="19.2,72.1">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.8" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.8"
+                    Point2="0,39.8"
+                    Point3="4,39.8" />
+                  <mssgle:LineSegment
+                    End="15.2,39.8" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.2,39.8"
+                    Point2="19.2,39.8"
+                    Point3="19.2,43.8" />
+                  <mssgle:LineSegment
+                    End="19.2,72.1" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Dimension Tiempo\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Dimension Tiempo\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
