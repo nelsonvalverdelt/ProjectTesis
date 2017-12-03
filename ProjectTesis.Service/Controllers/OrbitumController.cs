@@ -1,41 +1,44 @@
-﻿using System;
+﻿using ProjectTesis.Service.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace ProjectTesis.Service.Controllers
 {
     public class OrbitumController : ApiController
-    {/*
+    {
         OrbitumMartConnection db = new OrbitumMartConnection();
+
         [Route("api/Clientes")]
-        public IEnumerable<Dim_Cliente> GetJsonCliente()
+        [HttpGet]
+        public IEnumerable<Dim_Cliente> GetCliente()
         {
             return db.Dim_Cliente;
         }
         [Route("api/Empleados")]
-        public IEnumerable<Dim_Empleado> GetJsonEmpleado()
+        [HttpGet]
+        public IEnumerable<Dim_Empleado> GetEmpleado()
         {
             return db.Dim_Empleado;
         }
         [Route("api/Productos")]
-        public IEnumerable<Dim_Producto> GetJsonProducto()
+        [HttpGet]
+        public IEnumerable<Dim_Producto> GetProducto()
         {
             return db.Dim_Producto;
         }
         [Route("api/Tiempos")]
-        public IEnumerable<Dim_Tiempo> GetJsonTiempo()
+        [HttpGet]
+        public IEnumerable<Dim_Tiempo> GetTiempo()
         {
             return db.Dim_Tiempo;
         }
         [Route("api/Ventas")]
-        public IEnumerable<Fac_Ventas> GetJsonVentas()
+        [HttpGet]
+        public IEnumerable<Fac_Ventas> GetVentas()
         {
             return db.Fac_Ventas;
         }
-            */
+            
     }
 
 }
