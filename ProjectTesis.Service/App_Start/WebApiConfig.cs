@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using ProjectTesis.Service.Formatter;
+using System.Net.Http.Headers;
 
 namespace ProjectTesis.Service
 {
@@ -10,6 +12,8 @@ namespace ProjectTesis.Service
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            //Formatter Csv
+            config.Formatters.Add(new CsvFormatter());
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -19,6 +23,10 @@ namespace ProjectTesis.Service
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            //Formatter Json
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+
         }
     }
 }

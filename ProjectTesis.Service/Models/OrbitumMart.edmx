@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Orbitum_MartModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Dim_Cliente">
+          <Key>
+            <PropertyRef Name="Cliente_Key" />
+          </Key>
+          <Property Name="Cliente_Key" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClienteId" Type="int" Nullable="false" />
+          <Property Name="Documento" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dim_Empleado">
+          <Key>
+            <PropertyRef Name="Empleado_Key" />
+          </Key>
+          <Property Name="Empleado_Key" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpleadoId" Type="int" Nullable="false" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dim_Producto">
+          <Key>
+            <PropertyRef Name="Producto_Key" />
+          </Key>
+          <Property Name="Producto_Key" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductoId" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Marca" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Grupo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SubGrupo" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dim_Tiempo">
+          <Key>
+            <PropertyRef Name="Tiempo_Key" />
+          </Key>
+          <Property Name="Tiempo_Key" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Año" Type="int" Nullable="false" />
+          <Property Name="Mes" Type="int" Nullable="false" />
+          <Property Name="Dia" Type="int" Nullable="false" />
+          <Property Name="Hora" Type="int" Nullable="false" />
+          <Property Name="Minuto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fac_Ventas">
+          <Key>
+            <PropertyRef Name="Cliente_Key" />
+            <PropertyRef Name="Empleado_Key" />
+            <PropertyRef Name="Producto_Key" />
+            <PropertyRef Name="Tiempo_Key" />
+          </Key>
+          <Property Name="Cliente_Key" Type="int" Nullable="false" />
+          <Property Name="Empleado_Key" Type="int" Nullable="false" />
+          <Property Name="Producto_Key" Type="int" Nullable="false" />
+          <Property Name="Tiempo_Key" Type="int" Nullable="false" />
+          <Property Name="Precio" Type="money" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Monto" Type="money" Nullable="false" />
+          <Property Name="RecargoUsoTarjeta" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="MontoTotal" Type="money" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Fac_Ventas_ToTable">
+          <End Role="Dim_Cliente" Type="Self.Dim_Cliente" Multiplicity="1" />
+          <End Role="Fac_Ventas" Type="Self.Fac_Ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dim_Cliente">
+              <PropertyRef Name="Cliente_Key" />
+            </Principal>
+            <Dependent Role="Fac_Ventas">
+              <PropertyRef Name="Cliente_Key" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fac_Ventas_ToTable_1">
+          <End Role="Dim_Empleado" Type="Self.Dim_Empleado" Multiplicity="1" />
+          <End Role="Fac_Ventas" Type="Self.Fac_Ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dim_Empleado">
+              <PropertyRef Name="Empleado_Key" />
+            </Principal>
+            <Dependent Role="Fac_Ventas">
+              <PropertyRef Name="Empleado_Key" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fac_Ventas_ToTable_2">
+          <End Role="Dim_Tiempo" Type="Self.Dim_Tiempo" Multiplicity="1" />
+          <End Role="Fac_Ventas" Type="Self.Fac_Ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dim_Tiempo">
+              <PropertyRef Name="Tiempo_Key" />
+            </Principal>
+            <Dependent Role="Fac_Ventas">
+              <PropertyRef Name="Tiempo_Key" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fac_Ventas_ToTable_3">
+          <End Role="Dim_Producto" Type="Self.Dim_Producto" Multiplicity="1" />
+          <End Role="Fac_Ventas" Type="Self.Fac_Ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dim_Producto">
+              <PropertyRef Name="Producto_Key" />
+            </Principal>
+            <Dependent Role="Fac_Ventas">
+              <PropertyRef Name="Producto_Key" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Orbitum_MartModelStoreContainer">
+          <EntitySet Name="Dim_Cliente" EntityType="Self.Dim_Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dim_Empleado" EntityType="Self.Dim_Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dim_Producto" EntityType="Self.Dim_Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dim_Tiempo" EntityType="Self.Dim_Tiempo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fac_Ventas" EntityType="Self.Fac_Ventas" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Fac_Ventas_ToTable" Association="Self.FK_Fac_Ventas_ToTable">
+            <End Role="Dim_Cliente" EntitySet="Dim_Cliente" />
+            <End Role="Fac_Ventas" EntitySet="Fac_Ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fac_Ventas_ToTable_1" Association="Self.FK_Fac_Ventas_ToTable_1">
+            <End Role="Dim_Empleado" EntitySet="Dim_Empleado" />
+            <End Role="Fac_Ventas" EntitySet="Fac_Ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fac_Ventas_ToTable_2" Association="Self.FK_Fac_Ventas_ToTable_2">
+            <End Role="Dim_Tiempo" EntitySet="Dim_Tiempo" />
+            <End Role="Fac_Ventas" EntitySet="Fac_Ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fac_Ventas_ToTable_3" Association="Self.FK_Fac_Ventas_ToTable_3">
+            <End Role="Dim_Producto" EntitySet="Dim_Producto" />
+            <End Role="Fac_Ventas" EntitySet="Fac_Ventas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Orbitum_MartModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Dim_Cliente">
+          <Key>
+            <PropertyRef Name="Cliente_Key" />
+          </Key>
+          <Property Name="Cliente_Key" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClienteId" Type="Int32" Nullable="false" />
+          <Property Name="Documento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Fac_Ventas" Relationship="Self.FK_Fac_Ventas_ToTable" FromRole="Dim_Cliente" ToRole="Fac_Ventas" />
+        </EntityType>
+        <EntityType Name="Dim_Empleado">
+          <Key>
+            <PropertyRef Name="Empleado_Key" />
+          </Key>
+          <Property Name="Empleado_Key" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpleadoId" Type="Int32" Nullable="false" />
+          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Fac_Ventas" Relationship="Self.FK_Fac_Ventas_ToTable_1" FromRole="Dim_Empleado" ToRole="Fac_Ventas" />
+        </EntityType>
+        <EntityType Name="Dim_Producto">
+          <Key>
+            <PropertyRef Name="Producto_Key" />
+          </Key>
+          <Property Name="Producto_Key" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductoId" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Grupo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SubGrupo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Fac_Ventas" Relationship="Self.FK_Fac_Ventas_ToTable_3" FromRole="Dim_Producto" ToRole="Fac_Ventas" />
+        </EntityType>
+        <EntityType Name="Dim_Tiempo">
+          <Key>
+            <PropertyRef Name="Tiempo_Key" />
+          </Key>
+          <Property Name="Tiempo_Key" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Año" Type="Int32" Nullable="false" />
+          <Property Name="Mes" Type="Int32" Nullable="false" />
+          <Property Name="Dia" Type="Int32" Nullable="false" />
+          <Property Name="Hora" Type="Int32" Nullable="false" />
+          <Property Name="Minuto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Fac_Ventas" Relationship="Self.FK_Fac_Ventas_ToTable_2" FromRole="Dim_Tiempo" ToRole="Fac_Ventas" />
+        </EntityType>
+        <EntityType Name="Fac_Ventas">
+          <Key>
+            <PropertyRef Name="Cliente_Key" />
+            <PropertyRef Name="Empleado_Key" />
+            <PropertyRef Name="Producto_Key" />
+            <PropertyRef Name="Tiempo_Key" />
+          </Key>
+          <Property Name="Cliente_Key" Type="Int32" Nullable="false" />
+          <Property Name="Empleado_Key" Type="Int32" Nullable="false" />
+          <Property Name="Producto_Key" Type="Int32" Nullable="false" />
+          <Property Name="Tiempo_Key" Type="Int32" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="RecargoUsoTarjeta" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="MontoTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Dim_Cliente" Relationship="Self.FK_Fac_Ventas_ToTable" FromRole="Fac_Ventas" ToRole="Dim_Cliente" />
+          <NavigationProperty Name="Dim_Empleado" Relationship="Self.FK_Fac_Ventas_ToTable_1" FromRole="Fac_Ventas" ToRole="Dim_Empleado" />
+          <NavigationProperty Name="Dim_Producto" Relationship="Self.FK_Fac_Ventas_ToTable_3" FromRole="Fac_Ventas" ToRole="Dim_Producto" />
+          <NavigationProperty Name="Dim_Tiempo" Relationship="Self.FK_Fac_Ventas_ToTable_2" FromRole="Fac_Ventas" ToRole="Dim_Tiempo" />
+        </EntityType>
+        <Association Name="FK_Fac_Ventas_ToTable">
+          <End Role="Dim_Cliente" Type="Self.Dim_Cliente" Multiplicity="1" />
+          <End Role="Fac_Ventas" Type="Self.Fac_Ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dim_Cliente">
+              <PropertyRef Name="Cliente_Key" />
+            </Principal>
+            <Dependent Role="Fac_Ventas">
+              <PropertyRef Name="Cliente_Key" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fac_Ventas_ToTable_1">
+          <End Role="Dim_Empleado" Type="Self.Dim_Empleado" Multiplicity="1" />
+          <End Role="Fac_Ventas" Type="Self.Fac_Ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dim_Empleado">
+              <PropertyRef Name="Empleado_Key" />
+            </Principal>
+            <Dependent Role="Fac_Ventas">
+              <PropertyRef Name="Empleado_Key" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fac_Ventas_ToTable_3">
+          <End Role="Dim_Producto" Type="Self.Dim_Producto" Multiplicity="1" />
+          <End Role="Fac_Ventas" Type="Self.Fac_Ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dim_Producto">
+              <PropertyRef Name="Producto_Key" />
+            </Principal>
+            <Dependent Role="Fac_Ventas">
+              <PropertyRef Name="Producto_Key" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fac_Ventas_ToTable_2">
+          <End Role="Dim_Tiempo" Type="Self.Dim_Tiempo" Multiplicity="1" />
+          <End Role="Fac_Ventas" Type="Self.Fac_Ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dim_Tiempo">
+              <PropertyRef Name="Tiempo_Key" />
+            </Principal>
+            <Dependent Role="Fac_Ventas">
+              <PropertyRef Name="Tiempo_Key" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OrbitumMartConnection" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Dim_Cliente" EntityType="Self.Dim_Cliente" />
+          <EntitySet Name="Dim_Empleado" EntityType="Self.Dim_Empleado" />
+          <EntitySet Name="Dim_Producto" EntityType="Self.Dim_Producto" />
+          <EntitySet Name="Dim_Tiempo" EntityType="Self.Dim_Tiempo" />
+          <EntitySet Name="Fac_Ventas" EntityType="Self.Fac_Ventas" />
+          <AssociationSet Name="FK_Fac_Ventas_ToTable" Association="Self.FK_Fac_Ventas_ToTable">
+            <End Role="Dim_Cliente" EntitySet="Dim_Cliente" />
+            <End Role="Fac_Ventas" EntitySet="Fac_Ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fac_Ventas_ToTable_1" Association="Self.FK_Fac_Ventas_ToTable_1">
+            <End Role="Dim_Empleado" EntitySet="Dim_Empleado" />
+            <End Role="Fac_Ventas" EntitySet="Fac_Ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fac_Ventas_ToTable_3" Association="Self.FK_Fac_Ventas_ToTable_3">
+            <End Role="Dim_Producto" EntitySet="Dim_Producto" />
+            <End Role="Fac_Ventas" EntitySet="Fac_Ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fac_Ventas_ToTable_2" Association="Self.FK_Fac_Ventas_ToTable_2">
+            <End Role="Dim_Tiempo" EntitySet="Dim_Tiempo" />
+            <End Role="Fac_Ventas" EntitySet="Fac_Ventas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Orbitum_MartModelStoreContainer" CdmEntityContainer="OrbitumMartConnection">
+          <EntitySetMapping Name="Dim_Cliente">
+            <EntityTypeMapping TypeName="Orbitum_MartModel.Dim_Cliente">
+              <MappingFragment StoreEntitySet="Dim_Cliente">
+                <ScalarProperty Name="Cliente_Key" ColumnName="Cliente_Key" />
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dim_Empleado">
+            <EntityTypeMapping TypeName="Orbitum_MartModel.Dim_Empleado">
+              <MappingFragment StoreEntitySet="Dim_Empleado">
+                <ScalarProperty Name="Empleado_Key" ColumnName="Empleado_Key" />
+                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dim_Producto">
+            <EntityTypeMapping TypeName="Orbitum_MartModel.Dim_Producto">
+              <MappingFragment StoreEntitySet="Dim_Producto">
+                <ScalarProperty Name="Producto_Key" ColumnName="Producto_Key" />
+                <ScalarProperty Name="ProductoId" ColumnName="ProductoId" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Grupo" ColumnName="Grupo" />
+                <ScalarProperty Name="SubGrupo" ColumnName="SubGrupo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dim_Tiempo">
+            <EntityTypeMapping TypeName="Orbitum_MartModel.Dim_Tiempo">
+              <MappingFragment StoreEntitySet="Dim_Tiempo">
+                <ScalarProperty Name="Tiempo_Key" ColumnName="Tiempo_Key" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Año" ColumnName="Año" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="Minuto" ColumnName="Minuto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fac_Ventas">
+            <EntityTypeMapping TypeName="Orbitum_MartModel.Fac_Ventas">
+              <MappingFragment StoreEntitySet="Fac_Ventas">
+                <ScalarProperty Name="Cliente_Key" ColumnName="Cliente_Key" />
+                <ScalarProperty Name="Empleado_Key" ColumnName="Empleado_Key" />
+                <ScalarProperty Name="Producto_Key" ColumnName="Producto_Key" />
+                <ScalarProperty Name="Tiempo_Key" ColumnName="Tiempo_Key" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="RecargoUsoTarjeta" ColumnName="RecargoUsoTarjeta" />
+                <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

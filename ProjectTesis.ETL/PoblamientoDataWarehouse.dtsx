@@ -11,8 +11,8 @@
   DTS:LocaleID="10250"
   DTS:ObjectName="PoblamientoDataWarehouse"
   DTS:PackageType="5"
-  DTS:VersionBuild="92"
-  DTS:VersionGUID="{3B03A653-8F61-4203-BD8B-99314D0E3E8F}">
+  DTS:VersionBuild="156"
+  DTS:VersionGUID="{E1DB668C-229D-49A1-9B40-5D67BE19AC9C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -146,7 +146,7 @@ WHERE NRO_DOC IS NOT NULL</property>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Cliente\Db Orbitum - Consulta a Tabla Busqueda_Documentos.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
-                          length="150"
+                          length="255"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Cliente\Db Orbitum - Consulta a Tabla Busqueda_Documentos.Outputs[OLE DB Source Output].Columns[Nombre]"
                           name="Nombre"
                           truncationRowDisposition="FailComponent" />
@@ -161,7 +161,7 @@ WHERE NRO_DOC IS NOT NULL</property>
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Cliente\Db Orbitum - Consulta a Tabla Busqueda_Documentos.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
                           dataType="wstr"
-                          length="150"
+                          length="255"
                           name="Nombre" />
                       </externalMetadataColumns>
                     </output>
@@ -179,7 +179,7 @@ WHERE NRO_DOC IS NOT NULL</property>
                         <outputColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Cliente\Db Orbitum - Consulta a Tabla Busqueda_Documentos.Outputs[OLE DB Source Error Output].Columns[Nombre]"
                           dataType="wstr"
-                          length="150"
+                          length="255"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Cliente\Db Orbitum - Consulta a Tabla Busqueda_Documentos.Outputs[OLE DB Source Error Output].Columns[Nombre]"
                           name="Nombre" />
                         <outputColumn
@@ -405,7 +405,7 @@ WHERE NRO_DOC IS NOT NULL</property>
                         <inputColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Cliente\Tabla Data Warehouse Cliente.Inputs[OLE DB Destination Input].Columns[Nombre]"
                           cachedDataType="wstr"
-                          cachedLength="150"
+                          cachedLength="255"
                           cachedName="Nombre"
                           externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Cliente\Tabla Data Warehouse Cliente.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Cliente\Db Orbitum - Consulta a Tabla Busqueda_Documentos.Outputs[OLE DB Source Output].Columns[Nombre]" />
@@ -420,7 +420,7 @@ WHERE NRO_DOC IS NOT NULL</property>
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Cliente\Tabla Data Warehouse Cliente.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
                           dataType="wstr"
-                          length="100"
+                          length="255"
                           name="Nombre" />
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Cliente\Tabla Data Warehouse Cliente.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
@@ -561,7 +561,7 @@ AND VENDEDOR IS NOT NULL</property>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado\Db Orbitum - Consulta a Tabla Busqueda_Documentos.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
-                          length="150"
+                          length="250"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado\Db Orbitum - Consulta a Tabla Busqueda_Documentos.Outputs[OLE DB Source Output].Columns[Nombre]"
                           name="Nombre"
                           truncationRowDisposition="FailComponent" />
@@ -576,7 +576,7 @@ AND VENDEDOR IS NOT NULL</property>
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado\Db Orbitum - Consulta a Tabla Busqueda_Documentos.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
                           dataType="wstr"
-                          length="150"
+                          length="250"
                           name="Nombre" />
                       </externalMetadataColumns>
                     </output>
@@ -594,7 +594,7 @@ AND VENDEDOR IS NOT NULL</property>
                         <outputColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado\Db Orbitum - Consulta a Tabla Busqueda_Documentos.Outputs[OLE DB Source Error Output].Columns[Nombre]"
                           dataType="wstr"
-                          length="150"
+                          length="250"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado\Db Orbitum - Consulta a Tabla Busqueda_Documentos.Outputs[OLE DB Source Error Output].Columns[Nombre]"
                           name="Nombre" />
                         <outputColumn
@@ -821,7 +821,7 @@ AND VENDEDOR IS NOT NULL</property>
                         <inputColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado\Tabla Data Warehouse Empleado.Inputs[OLE DB Destination Input].Columns[Nombre]"
                           cachedDataType="wstr"
-                          cachedLength="150"
+                          cachedLength="250"
                           cachedName="Nombre"
                           externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado\Tabla Data Warehouse Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado\Db Orbitum - Consulta a Tabla Busqueda_Documentos.Outputs[OLE DB Source Output].Columns[Nombre]" />
@@ -836,7 +836,7 @@ AND VENDEDOR IS NOT NULL</property>
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado\Tabla Data Warehouse Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
                           dataType="wstr"
-                          length="50"
+                          length="255"
                           name="Nombre" />
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado\Tabla Data Warehouse Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
@@ -898,6 +898,82 @@ AND VENDEDOR IS NOT NULL</property>
               version="1">
               <components>
                 <component
+                  refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Agregar Ceros a la columa Recargo si es nulo"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Agregar Ceros a la columa Recargo si es nulo"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Agregar Ceros a la columa Recargo si es nulo.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Agregar Ceros a la columa Recargo si es nulo.Inputs[Derived Column Input].Columns[Recargo]"
+                          cachedDataType="numeric"
+                          cachedName="Recargo"
+                          cachedPrecision="2"
+                          cachedScale="2"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[Recargo]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[ISNULL](#{Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[Recargo]}) ? 0.00 : #{Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[Recargo]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">ISNULL(Recargo) ? 0.00 : Recargo</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Agregar Ceros a la columa Recargo si es nulo.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Agregar Ceros a la columa Recargo si es nulo.Inputs[Derived Column Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Agregar Ceros a la columa Recargo si es nulo.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Agregar Ceros a la columa Recargo si es nulo.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Agregar Ceros a la columa Recargo si es nulo.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Agregar Ceros a la columa Recargo si es nulo.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Agregar Ceros a la columa Recargo si es nulo.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Agregar Ceros a la columa Recargo si es nulo.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
                   refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum"
                   componentClassID="Microsoft.OLEDBSource"
                   contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
@@ -926,9 +1002,13 @@ AND VENDEDOR IS NOT NULL</property>
 Orbitum_Datawarehouse.dbo.Cliente.Id as ClienteId,
 Orbitum_Datawarehouse.dbo.Empleado.Id as EmpleadoId,
 Busqueda_Documentos$.CODIGO_ORDEN,
+Busqueda_Documentos$.COD_DOCUMENTO,
 Busqueda_Documentos$.[FECHA EMISION],
-Busqueda_Documentos$.[MODO PAGO],
-Busqueda_Documentos$.[FORMA PAGO]
+Busqueda_Documentos$.[ESTADO],
+Busqueda_Documentos$.[VIGENCIA],
+Busqueda_Documentos$.[FORMA PAGO],
+(SELECT CAST(0.05 AS DECIMAL(3,2))
+WHERE Busqueda_Documentos$.[FORMA PAGO]  != 'EFECTIVO DIRECTO') as Recargo
 FROM Ventas_Clientes$
 INNER JOIN Busqueda_Documentos$ ON Ventas_Clientes$.CODIGO_ORDEN = Busqueda_Documentos$.CODIGO_ORDEN
 INNER JOIN Orbitum_Datawarehouse.dbo.Cliente ON Orbitum_Datawarehouse.dbo.Cliente.Documento = Busqueda_Documentos$.NRO_DOC
@@ -997,26 +1077,6 @@ AND Orbitum_Datawarehouse.dbo.Empleado.Nombre = Busqueda_Documentos$.VENDEDOR</p
                           name="FECHA EMISION"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[MODO PAGO]"
-                          dataType="wstr"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].ExternalColumns[MODO PAGO]"
-                          length="255"
-                          lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[MODO PAGO]"
-                          name="MODO PAGO"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[FORMA PAGO]"
-                          dataType="wstr"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].ExternalColumns[FORMA PAGO]"
-                          length="255"
-                          lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[FORMA PAGO]"
-                          name="FORMA PAGO"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[CODIGO_ORDEN]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
@@ -1025,6 +1085,57 @@ AND Orbitum_Datawarehouse.dbo.Empleado.Nombre = Busqueda_Documentos$.VENDEDOR</p
                           length="50"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[CODIGO_ORDEN]"
                           name="CODIGO_ORDEN"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[ESTADO]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].ExternalColumns[ESTADO]"
+                          length="50"
+                          lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[ESTADO]"
+                          name="ESTADO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[COD_DOCUMENTO]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].ExternalColumns[COD_DOCUMENTO]"
+                          length="50"
+                          lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[COD_DOCUMENTO]"
+                          name="COD_DOCUMENTO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[VIGENCIA]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].ExternalColumns[VIGENCIA]"
+                          length="50"
+                          lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[VIGENCIA]"
+                          name="VIGENCIA"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[FORMA PAGO]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].ExternalColumns[FORMA PAGO]"
+                          length="50"
+                          lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[FORMA PAGO]"
+                          name="FORMA PAGO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[Recargo]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].ExternalColumns[Recargo]"
+                          lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[Recargo]"
+                          name="Recargo"
+                          precision="2"
+                          scale="2"
                           truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
@@ -1042,20 +1153,36 @@ AND Orbitum_Datawarehouse.dbo.Empleado.Nombre = Busqueda_Documentos$.VENDEDOR</p
                           dataType="dbTimeStamp"
                           name="FECHA EMISION" />
                         <externalMetadataColumn
-                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].ExternalColumns[MODO PAGO]"
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].ExternalColumns[CODIGO_ORDEN]"
                           dataType="wstr"
                           length="50"
-                          name="MODO PAGO" />
+                          name="CODIGO_ORDEN" />
+                        <externalMetadataColumn
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].ExternalColumns[ESTADO]"
+                          dataType="wstr"
+                          length="50"
+                          name="ESTADO" />
+                        <externalMetadataColumn
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].ExternalColumns[COD_DOCUMENTO]"
+                          dataType="wstr"
+                          length="50"
+                          name="COD_DOCUMENTO" />
+                        <externalMetadataColumn
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].ExternalColumns[VIGENCIA]"
+                          dataType="wstr"
+                          length="50"
+                          name="VIGENCIA" />
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].ExternalColumns[FORMA PAGO]"
                           dataType="wstr"
                           length="50"
                           name="FORMA PAGO" />
                         <externalMetadataColumn
-                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].ExternalColumns[CODIGO_ORDEN]"
-                          dataType="wstr"
-                          length="50"
-                          name="CODIGO_ORDEN" />
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].ExternalColumns[Recargo]"
+                          dataType="numeric"
+                          name="Recargo"
+                          precision="3"
+                          scale="2" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -1080,22 +1207,41 @@ AND Orbitum_Datawarehouse.dbo.Empleado.Nombre = Busqueda_Documentos$.VENDEDOR</p
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Error Output].Columns[CODIGO_ORDEN]"
                           name="CODIGO_ORDEN" />
                         <outputColumn
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Error Output].Columns[COD_DOCUMENTO]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Error Output].Columns[COD_DOCUMENTO]"
+                          name="COD_DOCUMENTO" />
+                        <outputColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Error Output].Columns[FECHA EMISION]"
                           dataType="dbTimeStamp"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Error Output].Columns[FECHA EMISION]"
                           name="FECHA EMISION" />
                         <outputColumn
-                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Error Output].Columns[MODO PAGO]"
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Error Output].Columns[ESTADO]"
                           dataType="wstr"
                           length="50"
-                          lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Error Output].Columns[MODO PAGO]"
-                          name="MODO PAGO" />
+                          lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Error Output].Columns[ESTADO]"
+                          name="ESTADO" />
+                        <outputColumn
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Error Output].Columns[VIGENCIA]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Error Output].Columns[VIGENCIA]"
+                          name="VIGENCIA" />
                         <outputColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Error Output].Columns[FORMA PAGO]"
                           dataType="wstr"
                           length="50"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Error Output].Columns[FORMA PAGO]"
                           name="FORMA PAGO" />
+                        <outputColumn
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Error Output].Columns[Recargo]"
+                          dataType="numeric"
+                          lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Error Output].Columns[Recargo]"
+                          name="Recargo"
+                          precision="3"
+                          scale="2" />
                         <outputColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -1198,6 +1344,28 @@ AND Orbitum_Datawarehouse.dbo.Empleado.Nombre = Busqueda_Documentos$.VENDEDOR</p
                           externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].ExternalColumns[EmpleadoId]"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[EmpleadoId]" />
                         <inputColumn
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].Columns[ESTADO]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="ESTADO"
+                          externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].ExternalColumns[Estado]"
+                          lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[ESTADO]" />
+                        <inputColumn
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].Columns[VIGENCIA]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="VIGENCIA"
+                          externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].ExternalColumns[Vigencia]"
+                          lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[VIGENCIA]" />
+                        <inputColumn
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].Columns[Recargo]"
+                          cachedDataType="numeric"
+                          cachedName="Recargo"
+                          cachedPrecision="2"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].ExternalColumns[Recargo]"
+                          lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[Recargo]" />
+                        <inputColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].Columns[CODIGO_ORDEN]"
                           cachedDataType="wstr"
                           cachedLength="50"
@@ -1205,25 +1373,18 @@ AND Orbitum_Datawarehouse.dbo.Empleado.Nombre = Busqueda_Documentos$.VENDEDOR</p
                           externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].ExternalColumns[Codigo]"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[CODIGO_ORDEN]" />
                         <inputColumn
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].Columns[COD_DOCUMENTO]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="COD_DOCUMENTO"
+                          externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].ExternalColumns[CodigoDocumento]"
+                          lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[COD_DOCUMENTO]" />
+                        <inputColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].Columns[FECHA EMISION]"
                           cachedDataType="dbTimeStamp"
                           cachedName="FECHA EMISION"
                           externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].ExternalColumns[FechaEmision]"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[FECHA EMISION]" />
-                        <inputColumn
-                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].Columns[MODO PAGO]"
-                          cachedDataType="wstr"
-                          cachedLength="255"
-                          cachedName="MODO PAGO"
-                          externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].ExternalColumns[ModoPago]"
-                          lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[MODO PAGO]" />
-                        <inputColumn
-                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].Columns[FORMA PAGO]"
-                          cachedDataType="wstr"
-                          cachedLength="255"
-                          cachedName="FORMA PAGO"
-                          externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].ExternalColumns[FormaPago]"
-                          lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].Columns[FORMA PAGO]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -1242,22 +1403,33 @@ AND Orbitum_Datawarehouse.dbo.Empleado.Nombre = Busqueda_Documentos$.VENDEDOR</p
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].ExternalColumns[Codigo]"
                           dataType="wstr"
-                          length="35"
+                          length="50"
                           name="Codigo" />
+                        <externalMetadataColumn
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].ExternalColumns[CodigoDocumento]"
+                          dataType="wstr"
+                          length="50"
+                          name="CodigoDocumento" />
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].ExternalColumns[FechaEmision]"
                           dataType="dbTimeStamp"
                           name="FechaEmision" />
                         <externalMetadataColumn
-                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].ExternalColumns[ModoPago]"
-                          dataType="wstr"
-                          length="50"
-                          name="ModoPago" />
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].ExternalColumns[Recargo]"
+                          dataType="numeric"
+                          name="Recargo"
+                          precision="3"
+                          scale="2" />
                         <externalMetadataColumn
-                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].ExternalColumns[FormaPago]"
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].ExternalColumns[Estado]"
                           dataType="wstr"
                           length="50"
-                          name="FormaPago" />
+                          name="Estado" />
+                        <externalMetadataColumn
+                          refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input].ExternalColumns[Vigencia]"
+                          dataType="wstr"
+                          length="50"
+                          name="Vigencia" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -1289,8 +1461,13 @@ AND Orbitum_Datawarehouse.dbo.Empleado.Nombre = Busqueda_Documentos$.VENDEDOR</p
               </components>
               <paths>
                 <path
-                  refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden.Paths[OLE DB Source Output]"
+                  refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden.Paths[Derived Column Output]"
                   endId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Agregar Ceros a la columa Recargo si es nulo.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden.Paths[OLE DB Source Output]"
+                  endId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Agregar Ceros a la columa Recargo si es nulo.Inputs[Derived Column Input]"
                   name="OLE DB Source Output"
                   startId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output]" />
               </paths>
@@ -1433,11 +1610,11 @@ Orbitum_Datawarehouse.dbo.Producto.Id</property>
                           name="ProductoId" />
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla OrdenDetalle\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].ExternalColumns[PrecioUnitario]"
-                          dataType="r8"
+                          dataType="cy"
                           name="PrecioUnitario" />
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla OrdenDetalle\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Output].ExternalColumns[Cantidad]"
-                          dataType="r8"
+                          dataType="i4"
                           name="Cantidad" />
                       </externalMetadataColumns>
                     </output>
@@ -1458,12 +1635,12 @@ Orbitum_Datawarehouse.dbo.Producto.Id</property>
                           name="ProductoId" />
                         <outputColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla OrdenDetalle\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Error Output].Columns[PrecioUnitario]"
-                          dataType="r8"
+                          dataType="cy"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla OrdenDetalle\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Error Output].Columns[PrecioUnitario]"
                           name="PrecioUnitario" />
                         <outputColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla OrdenDetalle\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Error Output].Columns[Cantidad]"
-                          dataType="r8"
+                          dataType="i4"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla OrdenDetalle\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum.Outputs[OLE DB Source Error Output].Columns[Cantidad]"
                           name="Cantidad" />
                         <outputColumn
@@ -1717,7 +1894,7 @@ FROM     [Ranking_Productos$]</property>
                       <outputColumns>
                         <outputColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos.Outputs[OLE DB Source Output].Columns[Identificador]"
-                          dataType="r8"
+                          dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos.Outputs[OLE DB Source Output].ExternalColumns[Identificador]"
@@ -1730,7 +1907,7 @@ FROM     [Ranking_Productos$]</property>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
-                          length="150"
+                          length="255"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos.Outputs[OLE DB Source Output].Columns[Nombre]"
                           name="Nombre"
                           truncationRowDisposition="FailComponent" />
@@ -1766,7 +1943,7 @@ FROM     [Ranking_Productos$]</property>
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos.Outputs[OLE DB Source Output].Columns[Precio]"
-                          dataType="r8"
+                          dataType="cy"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos.Outputs[OLE DB Source Output].ExternalColumns[Precio]"
@@ -1778,12 +1955,12 @@ FROM     [Ranking_Productos$]</property>
                         isUsed="True">
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos.Outputs[OLE DB Source Output].ExternalColumns[Identificador]"
-                          dataType="r8"
+                          dataType="i4"
                           name="Identificador" />
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
                           dataType="wstr"
-                          length="150"
+                          length="255"
                           name="Nombre" />
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos.Outputs[OLE DB Source Output].ExternalColumns[Marca]"
@@ -1802,7 +1979,7 @@ FROM     [Ranking_Productos$]</property>
                           name="SubGrupo" />
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos.Outputs[OLE DB Source Output].ExternalColumns[Precio]"
-                          dataType="r8"
+                          dataType="cy"
                           name="Precio" />
                       </externalMetadataColumns>
                     </output>
@@ -1813,13 +1990,13 @@ FROM     [Ranking_Productos$]</property>
                       <outputColumns>
                         <outputColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos.Outputs[OLE DB Source Error Output].Columns[Identificador]"
-                          dataType="r8"
+                          dataType="i4"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos.Outputs[OLE DB Source Error Output].Columns[Identificador]"
                           name="Identificador" />
                         <outputColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos.Outputs[OLE DB Source Error Output].Columns[Nombre]"
                           dataType="wstr"
-                          length="150"
+                          length="255"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos.Outputs[OLE DB Source Error Output].Columns[Nombre]"
                           name="Nombre" />
                         <outputColumn
@@ -1842,7 +2019,7 @@ FROM     [Ranking_Productos$]</property>
                           name="SubGrupo" />
                         <outputColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos.Outputs[OLE DB Source Error Output].Columns[Precio]"
-                          dataType="r8"
+                          dataType="cy"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos.Outputs[OLE DB Source Error Output].Columns[Precio]"
                           name="Precio" />
                         <outputColumn
@@ -2151,14 +2328,14 @@ FROM     [Ranking_Productos$]</property>
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos.Outputs[OLE DB Source Output].Columns[Grupo]" />
                         <inputColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Tabla Data Warehouse Producto.Inputs[OLE DB Destination Input].Columns[Precio]"
-                          cachedDataType="r8"
+                          cachedDataType="cy"
                           cachedName="Precio"
                           externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Tabla Data Warehouse Producto.Inputs[OLE DB Destination Input].ExternalColumns[Precio]"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos.Outputs[OLE DB Source Output].Columns[Precio]" />
                         <inputColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Tabla Data Warehouse Producto.Inputs[OLE DB Destination Input].Columns[Nombre]"
                           cachedDataType="wstr"
-                          cachedLength="150"
+                          cachedLength="255"
                           cachedName="Nombre"
                           externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Tabla Data Warehouse Producto.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos.Outputs[OLE DB Source Output].Columns[Nombre]" />
@@ -2171,7 +2348,7 @@ FROM     [Ranking_Productos$]</property>
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos.Outputs[OLE DB Source Output].Columns[SubGrupo]" />
                         <inputColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Tabla Data Warehouse Producto.Inputs[OLE DB Destination Input].Columns[Identificador]"
-                          cachedDataType="r8"
+                          cachedDataType="i4"
                           cachedName="Identificador"
                           externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Tabla Data Warehouse Producto.Inputs[OLE DB Destination Input].ExternalColumns[Codigo]"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos.Outputs[OLE DB Source Output].Columns[Identificador]" />
@@ -2190,7 +2367,7 @@ FROM     [Ranking_Productos$]</property>
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Tabla Data Warehouse Producto.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
                           dataType="wstr"
-                          length="250"
+                          length="255"
                           name="Nombre" />
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Tabla Data Warehouse Producto.Inputs[OLE DB Destination Input].ExternalColumns[Marca]"
@@ -2310,13 +2487,13 @@ FROM     [Ranking_Productos$]</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="324,41.6"
+          Id="Package\Limpieaza de las tablas de la base de datos Orbitum"
+          TopLeft="172.571431510302,26.5882352855379" />
+        <NodeLayout
           Size="139.2,41.6"
           Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Cliente"
           TopLeft="26.9714296710734,10.776473050629" />
-        <NodeLayout
-          Size="168.8,41.6"
-          Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla OrdenDetalle"
-          TopLeft="277.257148219128,148.42353365875" />
         <NodeLayout
           Size="153.6,41.6"
           Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado"
@@ -2325,6 +2502,10 @@ FROM     [Ranking_Productos$]</property>
           Size="136,41.6"
           Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden"
           TopLeft="162.97143198714,76.8470622125381" />
+        <NodeLayout
+          Size="168.8,41.6"
+          Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla OrdenDetalle"
+          TopLeft="277.257148219128,148.42353365875" />
         <NodeLayout
           Size="148.8,41.6"
           Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto"
@@ -2459,25 +2640,21 @@ FROM     [Ranking_Productos$]</property>
           PanelSize="502.4,252"
           Size="502.4,295.2"
           Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse"
-          TopLeft="77.7142870377523,116.235295747803" />
-        <NodeLayout
-          Size="324,41.6"
-          Id="Package\Limpieaza de las tablas de la base de datos Orbitum"
-          TopLeft="172.571431510302,26.5882352855379" />
+          TopLeft="77.7142870377523,115.623531033341" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="331.742859274027,68.1882352855379">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,48.047060462265"
+              EndConnector="0,47.4352957478031"
               Start="0,0"
-              End="0,40.547060462265">
+              End="0,39.9352957478031">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,40.547060462265" />
+                    End="0,39.9352957478031" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2564,59 +2741,8 @@ FROM     [Ranking_Productos$]</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla OrdenDetalle">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="418.4,41.6"
-          Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla OrdenDetalle\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum"
-          TopLeft="125.257146992976,93.788236889955" />
-        <NodeLayout
-          Size="250.4,41.6"
-          Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla OrdenDetalle\Tabla Data Warehouse OrdenDetalle"
-          TopLeft="211.085718071218,217.41176777744" />
-        <EdgeLayout
-          Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla OrdenDetalle.Paths[OLE DB Source Output]"
-          TopLeft="335.371432532097,135.388236889955">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,82.023530887485"
-              Start="0,0"
-              End="0,74.523530887485">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,74.523530887485" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla OrdenDetalle\Tabla Data Warehouse OrdenDetalle">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla OrdenDetalle\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum">
+    design-time-name="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Cliente\Db Orbitum - Consulta a Tabla Busqueda_Documentos">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2627,7 +2753,7 @@ FROM     [Ranking_Productos$]</property>
     design-time-name="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="213.6,41.6"
           Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado\Hoja Busqueda_Documentos"
@@ -2671,7 +2797,9 @@ FROM     [Ranking_Productos$]</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2698,45 +2826,67 @@ FROM     [Ranking_Productos$]</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado\Db Orbitum - Consulta a Tabla Busqueda_Documentos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="418.4,41.6"
-          Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum"
-          TopLeft="267.2,94.4" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="217.6,41.6"
           Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Tabla Data Warehouse Orden"
-          TopLeft="359.2,239.2" />
+          TopLeft="292.114286015959,236.141176281834" />
+        <NodeLayout
+          Size="292,41.6"
+          Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Agregar Ceros a la columa Recargo si es nulo"
+          TopLeft="252.571433349532,141.223531033341" />
+        <NodeLayout
+          Size="418.4,41.6"
+          Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum"
+          TopLeft="188.114282201261,34.6823521260984" />
         <EdgeLayout
           Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden.Paths[OLE DB Source Output]"
-          TopLeft="476.4,136">
+          TopLeft="397.942857775397,76.2823521260984">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-8.39999999999998,103.2"
+              EndConnector="0,64.9411789072426"
               Start="0,0"
-              End="-8.39999999999998,95.7">
+              End="0,57.4411789072426">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,47.6" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,47.6"
-                    Point2="0,51.6"
-                    Point3="-4,51.6" />
+                    End="0,57.4411789072426" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Orden.Paths[Derived Column Output]"
+          TopLeft="399.742859682746,182.823531033341">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53.3176452484931"
+              Start="0,0"
+              End="0,45.8176452484931">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-4.39999999999998,51.6" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-4.39999999999998,51.6"
-                    Point2="-8.39999999999998,51.6"
-                    Point3="-8.39999999999998,55.6" />
-                  <mssgle:LineSegment
-                    End="-8.39999999999998,95.7" />
+                    End="0,45.8176452484931" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2770,6 +2920,67 @@ FROM     [Ranking_Productos$]</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
+    design-time-name="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla OrdenDetalle">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="418.4,41.6"
+          Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla OrdenDetalle\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum"
+          TopLeft="125.257146992976,93.788236889955" />
+        <NodeLayout
+          Size="250.4,41.6"
+          Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla OrdenDetalle\Tabla Data Warehouse OrdenDetalle"
+          TopLeft="211.085718071218,217.41176777744" />
+        <EdgeLayout
+          Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla OrdenDetalle.Paths[OLE DB Source Output]"
+          TopLeft="335.371432532097,135.388236889955">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,82.023530887485"
+              Start="0,0"
+              End="0,74.523530887485">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74.523530887485" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla OrdenDetalle\Consulta y joins de la base de datos Orbitum_Datawarehouse y Orbitum">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla OrdenDetalle\Tabla Data Warehouse OrdenDetalle">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto">
     <LayoutInfo>
       <GraphLayout
@@ -2779,13 +2990,13 @@ FROM     [Ranking_Productos$]</property>
           Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Tabla Data Warehouse Producto"
           TopLeft="340.8,211.2" />
         <NodeLayout
-          Size="138.4,41.6"
-          Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Excel Source"
-          TopLeft="642.4,100.8" />
-        <NodeLayout
           Size="250.4,41.6"
           Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos"
           TopLeft="337.6,80.8" />
+        <NodeLayout
+          Size="138.4,41.6"
+          Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Excel Source"
+          TopLeft="642.4,100.8" />
         <EdgeLayout
           Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto.Paths[OLE DB Source Output]"
           TopLeft="459.4,122.4">
@@ -2812,19 +3023,6 @@ FROM     [Ranking_Productos$]</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Excel Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Tabla Data Warehouse Producto">
     <Properties>
       <Property>
@@ -2838,26 +3036,23 @@ FROM     [Ranking_Productos$]</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Cliente\Db Orbitum - Consulta a Tabla Busqueda_Documentos">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado\Db Orbitum - Consulta a Tabla Busqueda_Documentos">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Consulta a Tabla Ranking_Productos">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Producto\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

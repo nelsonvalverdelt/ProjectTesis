@@ -11,8 +11,8 @@
   DTS:LocaleID="10250"
   DTS:ObjectName="PoblamientoDataMart"
   DTS:PackageType="5"
-  DTS:VersionBuild="37"
-  DTS:VersionGUID="{14B9DFE0-F06B-49B7-94F1-68763B276506}">
+  DTS:VersionBuild="67"
+  DTS:VersionGUID="{BCC5F192-1478-462F-806A-151FAD3DBA5C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -32,6 +32,506 @@
         <SQLTask:SqlTaskData
           SQLTask:Connection="{52F746CF-0BE8-4D50-9370-826A199D1949}"
           SQLTask:SqlStatementSource="&#xA;DELETE Fac_Ventas&#xA; &#xA;DELETE Dim_Empleado&#xA;&#xA;DBCC CHECKIDENT('Dim_Empleado', reseed,0)&#xA;&#xA;DELETE Dim_Tiempo&#xA;&#xA;DBCC CHECKIDENT('Dim_Tiempo', reseed,0)&#xA;&#xA;DELETE Dim_Cliente&#xA;&#xA;DBCC CHECKIDENT('Dim_Cliente', reseed,0)&#xA;&#xA;DELETE Dim_Producto&#xA;&#xA;DBCC CHECKIDENT('Dim_Producto', reseed,0)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Poblamiento Tabla Hecho Ventas"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0DE552BB-CC58-4342-B90E-277C413C2533}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Poblamiento Tabla Hecho Ventas"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Consulta y Joins Data Warehouse y DataMart Orbitum"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+Orbitum_Mart.dbo.Dim_Cliente.Cliente_Key,
+Orbitum_Mart.dbo.Dim_Empleado.Empleado_Key,
+Orbitum_Mart.dbo.Dim_Tiempo.Tiempo_Key,
+Orbitum_Mart.dbo.Dim_Producto.Producto_Key,
+PrecioUnitario as Precio,
+Cantidad,
+(OrdenDetalle.PrecioUnitario * OrdenDetalle.Cantidad) as Monto,
+Orden.Recargo as RecargoUsoTarjeta,
+((OrdenDetalle.PrecioUnitario * OrdenDetalle.Cantidad) + ((OrdenDetalle.PrecioUnitario * OrdenDetalle.Cantidad) *Recargo)) as MontoTotal
+FROM Orden
+INNER JOIN OrdenDetalle ON Orden.Id = OrdenDetalle.OrdenId
+INNER JOIN Orbitum_Mart.dbo.Dim_Cliente ON Orbitum_Mart.dbo.Dim_Cliente.ClienteId = Orden.ClienteId
+INNER JOIN Orbitum_Mart.dbo.Dim_Empleado ON Orbitum_Mart.dbo.Dim_Empleado.EmpleadoId = Orden.EmpleadoId
+INNER JOIN Orbitum_Mart.dbo.Dim_Tiempo ON Orbitum_Mart.dbo.Dim_Tiempo.Fecha = Orden.FechaEmision
+INNER JOIN Orbitum_Mart.dbo.Dim_Producto ON Orbitum_Mart.dbo.Dim_Producto.ProductoId = OrdenDetalle.ProductoId
+WHERE Estado = 'DESPACHADO COBRADO'</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Connections[OleDbConnection]"
+                  connectionManagerID="{83922DFA-85AB-443D-BF30-85A3E87F24D5}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAMBDA_NEEL.Orbitum_Datawarehouse.Neel]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[Cliente_Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].ExternalColumns[Cliente_Key]"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[Cliente_Key]"
+                      name="Cliente_Key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[Empleado_Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].ExternalColumns[Empleado_Key]"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[Empleado_Key]"
+                      name="Empleado_Key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[Tiempo_Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].ExternalColumns[Tiempo_Key]"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[Tiempo_Key]"
+                      name="Tiempo_Key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[Producto_Key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].ExternalColumns[Producto_Key]"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[Producto_Key]"
+                      name="Producto_Key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[Precio]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].ExternalColumns[Precio]"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[Precio]"
+                      name="Precio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[Cantidad]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].ExternalColumns[Cantidad]"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[Cantidad]"
+                      name="Cantidad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[Monto]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].ExternalColumns[Monto]"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[Monto]"
+                      name="Monto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[RecargoUsoTarjeta]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].ExternalColumns[RecargoUsoTarjeta]"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[RecargoUsoTarjeta]"
+                      name="RecargoUsoTarjeta"
+                      precision="3"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[MontoTotal]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].ExternalColumns[MontoTotal]"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[MontoTotal]"
+                      name="MontoTotal"
+                      precision="24"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].ExternalColumns[Cliente_Key]"
+                      dataType="i4"
+                      name="Cliente_Key" />
+                    <externalMetadataColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].ExternalColumns[Empleado_Key]"
+                      dataType="i4"
+                      name="Empleado_Key" />
+                    <externalMetadataColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].ExternalColumns[Tiempo_Key]"
+                      dataType="i4"
+                      name="Tiempo_Key" />
+                    <externalMetadataColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].ExternalColumns[Producto_Key]"
+                      dataType="i4"
+                      name="Producto_Key" />
+                    <externalMetadataColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].ExternalColumns[Precio]"
+                      dataType="cy"
+                      name="Precio" />
+                    <externalMetadataColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].ExternalColumns[Cantidad]"
+                      dataType="i4"
+                      name="Cantidad" />
+                    <externalMetadataColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].ExternalColumns[Monto]"
+                      dataType="cy"
+                      name="Monto" />
+                    <externalMetadataColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].ExternalColumns[RecargoUsoTarjeta]"
+                      dataType="numeric"
+                      name="RecargoUsoTarjeta"
+                      precision="3"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].ExternalColumns[MontoTotal]"
+                      dataType="numeric"
+                      name="MontoTotal"
+                      precision="24"
+                      scale="6" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output].Columns[Cliente_Key]"
+                      dataType="i4"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output].Columns[Cliente_Key]"
+                      name="Cliente_Key" />
+                    <outputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output].Columns[Empleado_Key]"
+                      dataType="i4"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output].Columns[Empleado_Key]"
+                      name="Empleado_Key" />
+                    <outputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output].Columns[Tiempo_Key]"
+                      dataType="i4"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output].Columns[Tiempo_Key]"
+                      name="Tiempo_Key" />
+                    <outputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output].Columns[Producto_Key]"
+                      dataType="i4"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output].Columns[Producto_Key]"
+                      name="Producto_Key" />
+                    <outputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output].Columns[Precio]"
+                      dataType="cy"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output].Columns[Precio]"
+                      name="Precio" />
+                    <outputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output].Columns[Cantidad]"
+                      dataType="i4"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output].Columns[Cantidad]"
+                      name="Cantidad" />
+                    <outputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output].Columns[Monto]"
+                      dataType="cy"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output].Columns[Monto]"
+                      name="Monto" />
+                    <outputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output].Columns[RecargoUsoTarjeta]"
+                      dataType="numeric"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output].Columns[RecargoUsoTarjeta]"
+                      name="RecargoUsoTarjeta"
+                      precision="3"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output].Columns[MontoTotal]"
+                      dataType="numeric"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output].Columns[MontoTotal]"
+                      name="MontoTotal"
+                      precision="24"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Poblamiento Tabla Hechos Ventas"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Fac_Ventas]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Connections[OleDbConnection]"
+                  connectionManagerID="{52F746CF-0BE8-4D50-9370-826A199D1949}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAMBDA_NEEL.Orbitum_Mart.Neel]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].Columns[Cliente_Key]"
+                      cachedDataType="i4"
+                      cachedName="Cliente_Key"
+                      externalMetadataColumnId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].ExternalColumns[Cliente_Key]"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[Cliente_Key]" />
+                    <inputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].Columns[Empleado_Key]"
+                      cachedDataType="i4"
+                      cachedName="Empleado_Key"
+                      externalMetadataColumnId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].ExternalColumns[Empleado_Key]"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[Empleado_Key]" />
+                    <inputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].Columns[Tiempo_Key]"
+                      cachedDataType="i4"
+                      cachedName="Tiempo_Key"
+                      externalMetadataColumnId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_Key]"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[Tiempo_Key]" />
+                    <inputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].Columns[Producto_Key]"
+                      cachedDataType="i4"
+                      cachedName="Producto_Key"
+                      externalMetadataColumnId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].ExternalColumns[Producto_Key]"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[Producto_Key]" />
+                    <inputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].Columns[Precio]"
+                      cachedDataType="cy"
+                      cachedName="Precio"
+                      externalMetadataColumnId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].ExternalColumns[Precio]"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[Precio]" />
+                    <inputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].Columns[Cantidad]"
+                      cachedDataType="i4"
+                      cachedName="Cantidad"
+                      externalMetadataColumnId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].ExternalColumns[Cantidad]"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[Cantidad]" />
+                    <inputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].Columns[Monto]"
+                      cachedDataType="cy"
+                      cachedName="Monto"
+                      externalMetadataColumnId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].ExternalColumns[Monto]"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[Monto]" />
+                    <inputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].Columns[RecargoUsoTarjeta]"
+                      cachedDataType="numeric"
+                      cachedName="RecargoUsoTarjeta"
+                      cachedPrecision="3"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].ExternalColumns[RecargoUsoTarjeta]"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[RecargoUsoTarjeta]" />
+                    <inputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].Columns[MontoTotal]"
+                      cachedDataType="numeric"
+                      cachedName="MontoTotal"
+                      cachedPrecision="24"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].ExternalColumns[MontoTotal]"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output].Columns[MontoTotal]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].ExternalColumns[Cliente_Key]"
+                      dataType="i4"
+                      name="Cliente_Key" />
+                    <externalMetadataColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].ExternalColumns[Empleado_Key]"
+                      dataType="i4"
+                      name="Empleado_Key" />
+                    <externalMetadataColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].ExternalColumns[Producto_Key]"
+                      dataType="i4"
+                      name="Producto_Key" />
+                    <externalMetadataColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_Key]"
+                      dataType="i4"
+                      name="Tiempo_Key" />
+                    <externalMetadataColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].ExternalColumns[Precio]"
+                      dataType="cy"
+                      name="Precio" />
+                    <externalMetadataColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].ExternalColumns[Cantidad]"
+                      dataType="i4"
+                      name="Cantidad" />
+                    <externalMetadataColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].ExternalColumns[Monto]"
+                      dataType="cy"
+                      name="Monto" />
+                    <externalMetadataColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].ExternalColumns[RecargoUsoTarjeta]"
+                      dataType="cy"
+                      name="RecargoUsoTarjeta" />
+                    <externalMetadataColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input].ExternalColumns[MontoTotal]"
+                      dataType="cy"
+                      name="MontoTotal" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Poblamiento Tabla Hecho Ventas.Paths[OLE DB Source Output]"
+              endId="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -140,10 +640,16 @@
                         <inputColumn
                           refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Dimension Cliente.Inputs[OLE DB Destination Input].Columns[Nombre]"
                           cachedDataType="wstr"
-                          cachedLength="150"
+                          cachedLength="255"
                           cachedName="Nombre"
                           externalMetadataColumnId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Dimension Cliente.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
                           lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Tabla Data Warehouse Cliente.Outputs[OLE DB Source Output].Columns[Nombre]" />
+                        <inputColumn
+                          refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Dimension Cliente.Inputs[OLE DB Destination Input].Columns[Id]"
+                          cachedDataType="i4"
+                          cachedName="Id"
+                          externalMetadataColumnId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Dimension Cliente.Inputs[OLE DB Destination Input].ExternalColumns[ClienteId]"
+                          lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Tabla Data Warehouse Cliente.Outputs[OLE DB Source Output].Columns[Id]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -159,8 +665,12 @@
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Dimension Cliente.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
                           dataType="wstr"
-                          length="100"
+                          length="255"
                           name="Nombre" />
+                        <externalMetadataColumn
+                          refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Dimension Cliente.Inputs[OLE DB Destination Input].ExternalColumns[ClienteId]"
+                          dataType="i4"
+                          name="ClienteId" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -214,7 +724,7 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT Documento, Nombre
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT *
 FROM Cliente
 WHERE Documento IS NOT NULL</property>
                     <property
@@ -268,9 +778,18 @@ WHERE Documento IS NOT NULL</property>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Tabla Data Warehouse Cliente.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
-                          length="150"
+                          length="255"
                           lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Tabla Data Warehouse Cliente.Outputs[OLE DB Source Output].Columns[Nombre]"
                           name="Nombre"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Tabla Data Warehouse Cliente.Outputs[OLE DB Source Output].Columns[Id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Tabla Data Warehouse Cliente.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                          lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Tabla Data Warehouse Cliente.Outputs[OLE DB Source Output].Columns[Id]"
+                          name="Id"
                           truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
@@ -283,8 +802,12 @@ WHERE Documento IS NOT NULL</property>
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Tabla Data Warehouse Cliente.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
                           dataType="wstr"
-                          length="100"
+                          length="255"
                           name="Nombre" />
+                        <externalMetadataColumn
+                          refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Tabla Data Warehouse Cliente.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                          dataType="i4"
+                          name="Id" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -292,6 +815,11 @@ WHERE Documento IS NOT NULL</property>
                       isErrorOut="true"
                       name="OLE DB Source Error Output">
                       <outputColumns>
+                        <outputColumn
+                          refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Tabla Data Warehouse Cliente.Outputs[OLE DB Source Error Output].Columns[Id]"
+                          dataType="i4"
+                          lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Tabla Data Warehouse Cliente.Outputs[OLE DB Source Error Output].Columns[Id]"
+                          name="Id" />
                         <outputColumn
                           refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Tabla Data Warehouse Cliente.Outputs[OLE DB Source Error Output].Columns[Documento]"
                           dataType="wstr"
@@ -301,7 +829,7 @@ WHERE Documento IS NOT NULL</property>
                         <outputColumn
                           refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Tabla Data Warehouse Cliente.Outputs[OLE DB Source Error Output].Columns[Nombre]"
                           dataType="wstr"
-                          length="100"
+                          length="255"
                           lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Tabla Data Warehouse Cliente.Outputs[OLE DB Source Error Output].Columns[Nombre]"
                           name="Nombre" />
                         <outputColumn
@@ -428,10 +956,16 @@ WHERE Documento IS NOT NULL</property>
                         <inputColumn
                           refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Dimension Empleado.Inputs[OLE DB Destination Input].Columns[Nombre]"
                           cachedDataType="wstr"
-                          cachedLength="150"
+                          cachedLength="255"
                           cachedName="Nombre"
                           externalMetadataColumnId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Dimension Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
                           lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Tabla Data Warehouse Empleado.Outputs[OLE DB Source Output].Columns[Nombre]" />
+                        <inputColumn
+                          refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Dimension Empleado.Inputs[OLE DB Destination Input].Columns[Id]"
+                          cachedDataType="i4"
+                          cachedName="Id"
+                          externalMetadataColumnId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Dimension Empleado.Inputs[OLE DB Destination Input].ExternalColumns[EmpleadoId]"
+                          lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Tabla Data Warehouse Empleado.Outputs[OLE DB Source Output].Columns[Id]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -447,8 +981,12 @@ WHERE Documento IS NOT NULL</property>
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Dimension Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
                           dataType="wstr"
-                          length="50"
+                          length="255"
                           name="Nombre" />
+                        <externalMetadataColumn
+                          refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Dimension Empleado.Inputs[OLE DB Destination Input].ExternalColumns[EmpleadoId]"
+                          dataType="i4"
+                          name="EmpleadoId" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -502,7 +1040,7 @@ WHERE Documento IS NOT NULL</property>
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT Usuario, Nombre
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT *
 FROM Empleado
 WHERE  Usuario IS NOT NULL</property>
                     <property
@@ -556,9 +1094,18 @@ WHERE  Usuario IS NOT NULL</property>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Tabla Data Warehouse Empleado.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
-                          length="150"
+                          length="255"
                           lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Tabla Data Warehouse Empleado.Outputs[OLE DB Source Output].Columns[Nombre]"
                           name="Nombre"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Tabla Data Warehouse Empleado.Outputs[OLE DB Source Output].Columns[Id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Tabla Data Warehouse Empleado.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                          lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Tabla Data Warehouse Empleado.Outputs[OLE DB Source Output].Columns[Id]"
+                          name="Id"
                           truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
@@ -571,8 +1118,12 @@ WHERE  Usuario IS NOT NULL</property>
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Tabla Data Warehouse Empleado.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
                           dataType="wstr"
-                          length="50"
+                          length="255"
                           name="Nombre" />
+                        <externalMetadataColumn
+                          refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Tabla Data Warehouse Empleado.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                          dataType="i4"
+                          name="Id" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -580,6 +1131,11 @@ WHERE  Usuario IS NOT NULL</property>
                       isErrorOut="true"
                       name="OLE DB Source Error Output">
                       <outputColumns>
+                        <outputColumn
+                          refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Tabla Data Warehouse Empleado.Outputs[OLE DB Source Error Output].Columns[Id]"
+                          dataType="i4"
+                          lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Tabla Data Warehouse Empleado.Outputs[OLE DB Source Error Output].Columns[Id]"
+                          name="Id" />
                         <outputColumn
                           refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Tabla Data Warehouse Empleado.Outputs[OLE DB Source Error Output].Columns[Usuario]"
                           dataType="wstr"
@@ -589,7 +1145,7 @@ WHERE  Usuario IS NOT NULL</property>
                         <outputColumn
                           refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Tabla Data Warehouse Empleado.Outputs[OLE DB Source Error Output].Columns[Nombre]"
                           dataType="wstr"
-                          length="50"
+                          length="255"
                           lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Tabla Data Warehouse Empleado.Outputs[OLE DB Source Error Output].Columns[Nombre]"
                           name="Nombre" />
                         <outputColumn
@@ -659,9 +1215,10 @@ WHERE  Usuario IS NOT NULL</property>
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT Codigo, Nombre, Marca, Grupo,  SubGrupo
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT *
 FROM Producto
-WHERE Codigo IS NOT NULL</property>
+WHERE Codigo IS NOT NULL
+AND Marca IS NOT NULL</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -713,7 +1270,7 @@ WHERE Codigo IS NOT NULL</property>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
-                          length="150"
+                          length="255"
                           lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Output].Columns[Nombre]"
                           name="Nombre"
                           truncationRowDisposition="FailComponent" />
@@ -747,6 +1304,24 @@ WHERE Codigo IS NOT NULL</property>
                           lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Output].Columns[SubGrupo]"
                           name="SubGrupo"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Output].Columns[Id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                          lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Output].Columns[Id]"
+                          name="Id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Output].Columns[Precio]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Output].ExternalColumns[Precio]"
+                          lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Output].Columns[Precio]"
+                          name="Precio"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -758,7 +1333,7 @@ WHERE Codigo IS NOT NULL</property>
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
                           dataType="wstr"
-                          length="250"
+                          length="255"
                           name="Nombre" />
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Output].ExternalColumns[Marca]"
@@ -775,6 +1350,14 @@ WHERE Codigo IS NOT NULL</property>
                           dataType="wstr"
                           length="50"
                           name="SubGrupo" />
+                        <externalMetadataColumn
+                          refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                          dataType="i4"
+                          name="Id" />
+                        <externalMetadataColumn
+                          refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Output].ExternalColumns[Precio]"
+                          dataType="cy"
+                          name="Precio" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -782,6 +1365,11 @@ WHERE Codigo IS NOT NULL</property>
                       isErrorOut="true"
                       name="OLE DB Source Error Output">
                       <outputColumns>
+                        <outputColumn
+                          refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Error Output].Columns[Id]"
+                          dataType="i4"
+                          lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Error Output].Columns[Id]"
+                          name="Id" />
                         <outputColumn
                           refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Error Output].Columns[Codigo]"
                           dataType="wstr"
@@ -791,7 +1379,7 @@ WHERE Codigo IS NOT NULL</property>
                         <outputColumn
                           refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Error Output].Columns[Nombre]"
                           dataType="wstr"
-                          length="250"
+                          length="255"
                           lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Error Output].Columns[Nombre]"
                           name="Nombre" />
                         <outputColumn
@@ -812,6 +1400,11 @@ WHERE Codigo IS NOT NULL</property>
                           length="50"
                           lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Error Output].Columns[SubGrupo]"
                           name="SubGrupo" />
+                        <outputColumn
+                          refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Error Output].Columns[Precio]"
+                          dataType="cy"
+                          lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Error Output].Columns[Precio]"
+                          name="Precio" />
                         <outputColumn
                           refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -911,7 +1504,7 @@ WHERE Codigo IS NOT NULL</property>
                         <inputColumn
                           refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Dimension Producto.Inputs[OLE DB Destination Input].Columns[Nombre]"
                           cachedDataType="wstr"
-                          cachedLength="150"
+                          cachedLength="255"
                           cachedName="Nombre"
                           externalMetadataColumnId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Dimension Producto.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
                           lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Output].Columns[Nombre]" />
@@ -936,6 +1529,12 @@ WHERE Codigo IS NOT NULL</property>
                           cachedName="SubGrupo"
                           externalMetadataColumnId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Dimension Producto.Inputs[OLE DB Destination Input].ExternalColumns[SubGrupo]"
                           lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Output].Columns[SubGrupo]" />
+                        <inputColumn
+                          refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Dimension Producto.Inputs[OLE DB Destination Input].Columns[Id]"
+                          cachedDataType="i4"
+                          cachedName="Id"
+                          externalMetadataColumnId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Dimension Producto.Inputs[OLE DB Destination Input].ExternalColumns[ProductoId]"
+                          lineageId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto.Outputs[OLE DB Source Output].Columns[Id]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -946,12 +1545,12 @@ WHERE Codigo IS NOT NULL</property>
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Dimension Producto.Inputs[OLE DB Destination Input].ExternalColumns[Codigo]"
                           dataType="wstr"
-                          length="35"
+                          length="50"
                           name="Codigo" />
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Dimension Producto.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
                           dataType="wstr"
-                          length="150"
+                          length="255"
                           name="Nombre" />
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Dimension Producto.Inputs[OLE DB Destination Input].ExternalColumns[Marca]"
@@ -968,6 +1567,10 @@ WHERE Codigo IS NOT NULL</property>
                           dataType="wstr"
                           length="50"
                           name="SubGrupo" />
+                        <externalMetadataColumn
+                          refId="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Dimension Producto.Inputs[OLE DB Destination Input].ExternalColumns[ProductoId]"
+                          dataType="i4"
+                          name="ProductoId" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -1430,21 +2033,6 @@ FROM Orden</property>
           DTS:To="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Tabla Hechos Ventas"
-      DTS:CreationName="Microsoft.Pipeline"
-      DTS:Description="Data Flow Task"
-      DTS:DTSID="{FD9428D7-1EB1-4B44-A13A-C7300BC09B9E}"
-      DTS:ExecutableType="Microsoft.Pipeline"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Tabla Hechos Ventas"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <pipeline
-          version="1" />
-      </DTS:ObjectData>
-    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -1458,11 +2046,11 @@ FROM Orden</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{4FD35215-01C9-434A-A609-8171CF379418}"
+      DTS:DTSID="{2984CDA4-8740-47BB-9F70-54A688664C89}"
       DTS:From="Package\Secuencia de Poblamiento al Data Mart Orbitum"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
-      DTS:To="Package\Tabla Hechos Ventas" />
+      DTS:To="Package\Poblamiento Tabla Hecho Ventas" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1476,6 +2064,14 @@ FROM Orden</property>
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="228,41.6"
+          Id="Package\Limpieza del Data Mart Orbitum"
+          TopLeft="157.142859818984,12.2352942892425" />
+        <NodeLayout
+          Size="233.6,41.6"
+          Id="Package\Poblamiento Tabla Hecho Ventas"
+          TopLeft="160.571431305944,393.976476113607" />
         <NodeLayout
           Size="163.2,41.6"
           Id="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente"
@@ -1565,10 +2161,6 @@ FROM Orden</property>
           Size="468,243.2"
           Id="Package\Secuencia de Poblamiento al Data Mart Orbitum"
           TopLeft="37.7142863565563,121.741178177962" />
-        <NodeLayout
-          Size="228,41.6"
-          Id="Package\Limpieza del Data Mart Orbitum"
-          TopLeft="157.142859818984,12.2352942892425" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="271.42857308777,53.8352942892425">
@@ -1591,24 +2183,20 @@ FROM Orden</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="176.8,41.6"
-          Id="Package\Tabla Hechos Ventas"
-          TopLeft="189.142860363941,401.364711399144" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="274.628573360249,364.941178177962">
+          TopLeft="274.54285883125,364.941178177962">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,36.4235332211825"
+              EndConnector="0,29.0352979356446"
               Start="0,0"
-              End="0,28.9235332211825">
+              End="0,21.5352979356446">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.9235332211825" />
+                    End="0,21.5352979356446" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1621,18 +2209,77 @@ FROM Orden</property>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente">
+    design-time-name="Package\Poblamiento Tabla Hecho Ventas">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="163.2,41.6"
-          Id="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Dimension Cliente"
-          TopLeft="309.6,275.2" />
+          Size="238.4,41.6"
+          Id="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas"
+          TopLeft="312.8,192" />
+        <NodeLayout
+          Size="332,41.6"
+          Id="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum"
+          TopLeft="264,79.2" />
+        <EdgeLayout
+          Id="Package\Poblamiento Tabla Hecho Ventas.Paths[OLE DB Source Output]"
+          TopLeft="431,120.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71.2"
+              Start="0,0"
+              End="0,63.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Poblamiento Tabla Hecho Ventas\Consulta y Joins Data Warehouse y DataMart Orbitum">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Poblamiento Tabla Hecho Ventas\Poblamiento Tabla Hechos Ventas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="220.8,41.6"
           Id="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Tabla Data Warehouse Cliente"
           TopLeft="282.4,146.4" />
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Dimension Cliente"
+          TopLeft="309.6,275.2" />
         <EdgeLayout
           Id="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente.Paths[OLE DB Source Output]"
           TopLeft="392,188">
@@ -1652,7 +2299,9 @@ FROM Orden</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -1671,19 +2320,27 @@ FROM Orden</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Tabla Data Warehouse Cliente">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="176.8,41.6"
-          Id="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Dimension Empleado"
-          TopLeft="331.2,268" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="235.2,41.6"
           Id="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Tabla Data Warehouse Empleado"
           TopLeft="303.2,145.6" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Dimension Empleado"
+          TopLeft="331.2,268" />
         <EdgeLayout
           Id="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado.Paths[OLE DB Source Output]"
           TopLeft="420.2,187.2">
@@ -1703,7 +2360,9 @@ FROM Orden</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -1722,11 +2381,19 @@ FROM Orden</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Tabla Data Warehouse Empleado">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="201.6,41.6"
           Id="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Dimension Producto"
@@ -1754,12 +2421,22 @@ FROM Orden</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Dimension Producto">
     <Properties>
@@ -1777,15 +2454,15 @@ FROM Orden</property>
     design-time-name="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Tiempo">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="165.6,41.6"
-          Id="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Tiempo\Dimension Tiempo"
-          TopLeft="318.4,266.8" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="217.6,41.6"
           Id="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Tiempo\Tabla Data Warehouse Orden"
           TopLeft="292,139.2" />
+        <NodeLayout
+          Size="165.6,41.6"
+          Id="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Tiempo\Dimension Tiempo"
+          TopLeft="318.4,266.8" />
         <EdgeLayout
           Id="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Tiempo.Paths[OLE DB Source Output]"
           TopLeft="401,180.8">
@@ -1805,7 +2482,9 @@ FROM Orden</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -1825,31 +2504,7 @@ FROM Orden</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Data Warehouse Producto">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Tiempo\Tabla Data Warehouse Orden">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Tabla Data Warehouse Cliente">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Tabla Data Warehouse Empleado">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
