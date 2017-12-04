@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="LAMBDA"
   DTS:CreatorName="LAMBDA\nelso"
-  DTS:DTSID="{628B8567-CCEF-47B9-90D1-DF65915B5F35}"
+  DTS:DTSID="{3F9C447C-4DCF-4A36-A455-A633A08112EF}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="14.0.0800.98"
   DTS:LocaleID="10250"
   DTS:ObjectName="PoblamientoDataWarehouse"
   DTS:PackageType="5"
-  DTS:VersionBuild="156"
-  DTS:VersionGUID="{E1DB668C-229D-49A1-9B40-5D67BE19AC9C}">
+  DTS:VersionBuild="159"
+  DTS:VersionGUID="{918E67EF-CDCA-4C8A-8F29-8129215FEEFC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -561,7 +561,7 @@ AND VENDEDOR IS NOT NULL</property>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado\Db Orbitum - Consulta a Tabla Busqueda_Documentos.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
-                          length="250"
+                          length="255"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado\Db Orbitum - Consulta a Tabla Busqueda_Documentos.Outputs[OLE DB Source Output].Columns[Nombre]"
                           name="Nombre"
                           truncationRowDisposition="FailComponent" />
@@ -576,7 +576,7 @@ AND VENDEDOR IS NOT NULL</property>
                         <externalMetadataColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado\Db Orbitum - Consulta a Tabla Busqueda_Documentos.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
                           dataType="wstr"
-                          length="250"
+                          length="255"
                           name="Nombre" />
                       </externalMetadataColumns>
                     </output>
@@ -594,7 +594,7 @@ AND VENDEDOR IS NOT NULL</property>
                         <outputColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado\Db Orbitum - Consulta a Tabla Busqueda_Documentos.Outputs[OLE DB Source Error Output].Columns[Nombre]"
                           dataType="wstr"
-                          length="250"
+                          length="255"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado\Db Orbitum - Consulta a Tabla Busqueda_Documentos.Outputs[OLE DB Source Error Output].Columns[Nombre]"
                           name="Nombre" />
                         <outputColumn
@@ -821,7 +821,7 @@ AND VENDEDOR IS NOT NULL</property>
                         <inputColumn
                           refId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado\Tabla Data Warehouse Empleado.Inputs[OLE DB Destination Input].Columns[Nombre]"
                           cachedDataType="wstr"
-                          cachedLength="250"
+                          cachedLength="255"
                           cachedName="Nombre"
                           externalMetadataColumnId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado\Tabla Data Warehouse Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
                           lineageId="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado\Db Orbitum - Consulta a Tabla Busqueda_Documentos.Outputs[OLE DB Source Output].Columns[Nombre]" />
@@ -2753,7 +2753,7 @@ FROM     [Ranking_Productos$]</property>
     design-time-name="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="213.6,41.6"
           Id="Package\Secuencia de Poblamiento de las Tablas del Data Warehouse\Tabla Empleado\Hoja Busqueda_Documentos"
@@ -2797,9 +2797,7 @@ FROM     [Ranking_Productos$]</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

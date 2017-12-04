@@ -6,7 +6,7 @@
 @model Collection<ApiDescription>
 
 @{
-    ViewBag.Title = "ASP.NET Web API Help Page";
+    ViewBag.Title = "Documentación Web Api Orbitum";
 
     // Group APIs by controller
     ILookup<HttpControllerDescriptor, ApiDescription> apiGroups = Model.ToLookup(api => api.ActionDescriptor.ControllerDescriptor);
@@ -23,10 +23,54 @@
 <div id="body" class="help-page">
     <section class="featured">
         <div class="content-wrapper">
-            <h2>Introduction</h2>
-            <p>
-                Provide a general description of your APIs here.
-            </p>
+            <hr/>
+            <h4>Cómo utilizarlo?</h4>
+            <hr />
+                <div class="row">
+                    <div class="col-sm-6 col-md-6">
+
+                            <div class="panel panel-primary">
+                                <div class="panel-heading"><strong>Peticiones con formato Json</strong></div>
+                                <div class="panel-body">
+
+                                    <p class="lead"><strong>Detalle</strong></p>
+
+                                    <p>
+                                        Formato <br />
+                                        http://{url}/api/<strong>{recurso}</strong>
+                                    </p>
+                                    <p>
+                                        Ejemplo:<br />
+                                        http://apiorbitum.azurewebsites.net/api/<strong>Clientes</strong>
+                                    </p>
+                                </div>
+                                <div class="panel-footer"></div>
+                            </div>
+
+                    </div>
+
+
+                    <div class="col-sm-6 col-md-6">
+
+                        <div class="panel panel-primary">
+                            <div class="panel-heading"><strong>Peticiones con Datastes CSV</strong></div>
+                            <div class="panel-body">
+
+                                <p class="lead"><strong>Detalle</strong></p>
+
+                                <p>
+                                    Formato <br />
+                                    http://{url}/api/{recurso}<strong>?type=csv</strong>
+                                </p>
+                                <p>
+                                    Ejemplo:<br />
+                                   http://apiorbitum.azurewebsites.net/api/Clientes<strong>?type=csv</strong>
+                                </p>
+                            </div>
+                            <div class="panel-footer"></div>
+                        </div>
+                    </div>
+
         </div>
     </section>
     <section class="content-wrapper main-content clear-fix">

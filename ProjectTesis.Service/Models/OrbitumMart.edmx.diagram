@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b279155708b44df09c2bf5181662a250" Name="Diagram1">
-        <EntityTypeShape EntityType="Orbitum_MartModel.Dim_Cliente" Width="1.5" PointX="5.875" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Orbitum_MartModel.Dim_Empleado" Width="1.5" PointX="6.125" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Orbitum_MartModel.Dim_Producto" Width="1.5" PointX="0.5" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Orbitum_MartModel.Dim_Tiempo" Width="1.5" PointX="0.5" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Orbitum_MartModel.Fac_Ventas" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="Orbitum_MartModel.FK_Fac_Ventas_ToTable" ManuallyRouted="false" />
-        <AssociationConnector Association="Orbitum_MartModel.FK_Fac_Ventas_ToTable_1" ManuallyRouted="false" />
-        <AssociationConnector Association="Orbitum_MartModel.FK_Fac_Ventas_ToTable_3" ManuallyRouted="false" />
-        <AssociationConnector Association="Orbitum_MartModel.FK_Fac_Ventas_ToTable_2" ManuallyRouted="false" />
+      <Diagram DiagramId="a113c230a437413288873cccd04a22c1" Name="Diagram1">
+        <EntityTypeShape EntityType="OrbitumMart.Dim_Cliente" Width="1.5" PointX="6.125" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrbitumMart.Dim_Empleado" Width="1.5" PointX="0.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrbitumMart.Dim_Producto" Width="1.5" PointX="6.125" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrbitumMart.Dim_Tiempo" Width="1.5" PointX="0.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrbitumMart.Fac_Ventas" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="OrbitumMart.FK_Fac_Ventas_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="OrbitumMart.FK_Fac_Ventas_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="OrbitumMart.FK_Fac_Ventas_ToTable_3" ManuallyRouted="false" />
+        <AssociationConnector Association="OrbitumMart.FK_Fac_Ventas_ToTable_2" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -191,7 +191,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataCsv.cs" />
+    <Compile Include="Models\ClienteCsv.cs" />
     <Compile Include="Models\Dim_Cliente.cs">
       <DependentUpon>OrbitumMart.tt</DependentUpon>
     </Compile>
@@ -204,6 +204,7 @@
     <Compile Include="Models\Dim_Tiempo.cs">
       <DependentUpon>OrbitumMart.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmpleadoCsv.cs" />
     <Compile Include="Models\Fac_Ventas.cs">
       <DependentUpon>OrbitumMart.tt</DependentUpon>
     </Compile>
@@ -222,6 +223,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OrbitumMart.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProductoCsv.cs" />
+    <Compile Include="Models\TiempoCsv.cs" />
+    <Compile Include="Models\VentasCsv.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -272,6 +276,7 @@
     <Content Include="Models\OrbitumMart.edmx.diagram">
       <DependentUpon>OrbitumMart.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\apiorbitum - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

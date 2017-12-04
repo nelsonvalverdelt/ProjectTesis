@@ -12,7 +12,7 @@ namespace ProjectTesis.Service
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-            //Formatter Csv
+            //Formateador Csv
             config.Formatters.Add(new CsvFormatter());
 
             // Web API routes
@@ -24,7 +24,7 @@ namespace ProjectTesis.Service
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            //Formatter Json
+            //Formateado a Json
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
 
         }

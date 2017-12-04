@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Orbitum_MartModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="OrbitumMart.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Dim_Cliente">
           <Key>
             <PropertyRef Name="Cliente_Key" />
@@ -61,7 +61,7 @@
           <Property Name="Precio" Type="money" Nullable="false" />
           <Property Name="Cantidad" Type="int" Nullable="false" />
           <Property Name="Monto" Type="money" Nullable="false" />
-          <Property Name="RecargoUsoTarjeta" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="RecargoUsoTarjeta" Type="money" Nullable="false" />
           <Property Name="MontoTotal" Type="money" Nullable="false" />
         </EntityType>
         <Association Name="FK_Fac_Ventas_ToTable">
@@ -112,7 +112,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Orbitum_MartModelStoreContainer">
+        <EntityContainer Name="OrbitumMartStoreContainer">
           <EntitySet Name="Dim_Cliente" EntityType="Self.Dim_Cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dim_Empleado" EntityType="Self.Dim_Empleado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dim_Producto" EntityType="Self.Dim_Producto" Schema="dbo" store:Type="Tables" />
@@ -139,7 +139,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Orbitum_MartModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="OrbitumMart" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Dim_Cliente">
           <Key>
             <PropertyRef Name="Cliente_Key" />
@@ -200,7 +200,7 @@
           <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="Cantidad" Type="Int32" Nullable="false" />
           <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="RecargoUsoTarjeta" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="RecargoUsoTarjeta" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="MontoTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <NavigationProperty Name="Dim_Cliente" Relationship="Self.FK_Fac_Ventas_ToTable" FromRole="Fac_Ventas" ToRole="Dim_Cliente" />
           <NavigationProperty Name="Dim_Empleado" Relationship="Self.FK_Fac_Ventas_ToTable_1" FromRole="Fac_Ventas" ToRole="Dim_Empleado" />
@@ -255,7 +255,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="OrbitumMartConnection" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AzureOrbitumMartConnection" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Dim_Cliente" EntityType="Self.Dim_Cliente" />
           <EntitySet Name="Dim_Empleado" EntityType="Self.Dim_Empleado" />
           <EntitySet Name="Dim_Producto" EntityType="Self.Dim_Producto" />
@@ -283,9 +283,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Orbitum_MartModelStoreContainer" CdmEntityContainer="OrbitumMartConnection">
+        <EntityContainerMapping StorageEntityContainer="OrbitumMartStoreContainer" CdmEntityContainer="AzureOrbitumMartConnection">
           <EntitySetMapping Name="Dim_Cliente">
-            <EntityTypeMapping TypeName="Orbitum_MartModel.Dim_Cliente">
+            <EntityTypeMapping TypeName="OrbitumMart.Dim_Cliente">
               <MappingFragment StoreEntitySet="Dim_Cliente">
                 <ScalarProperty Name="Cliente_Key" ColumnName="Cliente_Key" />
                 <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
@@ -295,7 +295,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Dim_Empleado">
-            <EntityTypeMapping TypeName="Orbitum_MartModel.Dim_Empleado">
+            <EntityTypeMapping TypeName="OrbitumMart.Dim_Empleado">
               <MappingFragment StoreEntitySet="Dim_Empleado">
                 <ScalarProperty Name="Empleado_Key" ColumnName="Empleado_Key" />
                 <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
@@ -305,7 +305,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Dim_Producto">
-            <EntityTypeMapping TypeName="Orbitum_MartModel.Dim_Producto">
+            <EntityTypeMapping TypeName="OrbitumMart.Dim_Producto">
               <MappingFragment StoreEntitySet="Dim_Producto">
                 <ScalarProperty Name="Producto_Key" ColumnName="Producto_Key" />
                 <ScalarProperty Name="ProductoId" ColumnName="ProductoId" />
@@ -318,7 +318,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Dim_Tiempo">
-            <EntityTypeMapping TypeName="Orbitum_MartModel.Dim_Tiempo">
+            <EntityTypeMapping TypeName="OrbitumMart.Dim_Tiempo">
               <MappingFragment StoreEntitySet="Dim_Tiempo">
                 <ScalarProperty Name="Tiempo_Key" ColumnName="Tiempo_Key" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
@@ -331,7 +331,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Fac_Ventas">
-            <EntityTypeMapping TypeName="Orbitum_MartModel.Fac_Ventas">
+            <EntityTypeMapping TypeName="OrbitumMart.Fac_Ventas">
               <MappingFragment StoreEntitySet="Fac_Ventas">
                 <ScalarProperty Name="Cliente_Key" ColumnName="Cliente_Key" />
                 <ScalarProperty Name="Empleado_Key" ColumnName="Empleado_Key" />

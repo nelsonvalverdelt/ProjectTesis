@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="LAMBDA"
   DTS:CreatorName="LAMBDA\nelso"
-  DTS:DTSID="{0FBD9005-A50B-4BAB-9D62-3F819806D6CB}"
+  DTS:DTSID="{84836464-60D4-4D6F-8349-9C81C4923AAB}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="14.0.0800.98"
   DTS:LocaleID="10250"
   DTS:ObjectName="PoblamientoDataMart"
   DTS:PackageType="5"
-  DTS:VersionBuild="82"
-  DTS:VersionGUID="{87BE4960-D4FB-4D93-B291-FFCAAF8FEDED}">
+  DTS:VersionBuild="89"
+  DTS:VersionGUID="{D3A526F6-F251-4F61-9502-F101A572EC4E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,30 +27,13 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA9Hv0PU2FS0uMRABCiYLm5gAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABA044TiN19ZVUFoqp+sQwMCDT8Cm6VIQTnXhc4vIHLGQAAAAAOgAAAAAIAACAAAADuNGxddA1QV8xLrv3Wyqhsc2nOoDsb5siPh8BOgJVR8yAAAACQldblqBDhCTY3lMnQikRQW0by0fku8RF20ruxNzR9lEAAAAAal3eupJ3KBDFRioaQvyf7ZxFRnJfIjx6VjC/i606vPR9CM8Uc3MhFfMaafbvBto1eD5/Vob3lIvNYHOfSlnsm</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA9Hv0PU2FS0uMRABCiYLm5gAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABo/JSs7MUY02DCjRUNIgeNbJVDvk2v0RRUEFR0rRKBxAAAAAAOgAAAAAIAACAAAABclhzJmyzUESVTQiuCdsmwp9bF2DcZdOWXhDYBYvOpUSAAAACz08xlUWqUzVnKlH9mGUgS3mT2TR4VCvSEl08rTcAZtkAAAAADjaIqA+0WAq0hkaM8p1R1klxCtaCmgx917UtqlHISWGOPamqnSBgncWqKmA4CzcZCpXkb4vz/1NvjhUcSf3EJ</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
-    <DTS:Executable
-      DTS:refId="Package\Crear Link Server Azure  de DB Orbitum Mart si no fue Registrado"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{CD6C8064-F79D-471F-ADDD-C9BFCC2D8224}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Crear Link Server Azure  de DB Orbitum Mart si no fue Registrado"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{83922DFA-85AB-443D-BF30-85A3E87F24D5}"
-          SQLTask:SqlStatementSource="IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='sp_addlinkedserver')&#xA;EXEC sp_addlinkedserver&#xA;@server='azure_orbitum', -- Nombre personalziado del servidor&#xA;@srvproduct='',     &#xA;@provider='sqlncli', --Utilizamos SQL Server native client&#xA;@datasrc='orbitum.database.windows.net',   -- Nuestro Servidor Azure&#xA;@location='',&#xA;@provstr='',&#xA;@catalog='Orbitum_Mart' --Nuestra base de datos&#xA;GO&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Limpieza del Data Mart Orbitum"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
@@ -66,23 +49,6 @@
         <SQLTask:SqlTaskData
           SQLTask:Connection="{AF5BA4A8-86D7-4EEB-96F7-FBD1678AC202}"
           SQLTask:SqlStatementSource="&#xA;DELETE Fac_Ventas&#xA; &#xA;DELETE Dim_Empleado&#xA;&#xA;DBCC CHECKIDENT('Dim_Empleado', reseed,0)&#xA;&#xA;DELETE Dim_Tiempo&#xA;&#xA;DBCC CHECKIDENT('Dim_Tiempo', reseed,0)&#xA;&#xA;DELETE Dim_Cliente&#xA;&#xA;DBCC CHECKIDENT('Dim_Cliente', reseed,0)&#xA;&#xA;DELETE Dim_Producto&#xA;&#xA;DBCC CHECKIDENT('Dim_Producto', reseed,0)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Login al LinkServer Azure"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{D6D0F745-7BB5-4CCF-B655-706AB403A4BE}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Login al LinkServer Azure"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{83922DFA-85AB-443D-BF30-85A3E87F24D5}"
-          SQLTask:SqlStatementSource="exec sp_addlinkedsrvlogin @rmtsrvname='azure_orbitum',@useself=false, @rmtuser='orbitum', @rmtpassword='@Developer19';&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -2097,26 +2063,10 @@ FROM Orden</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{1C25B27B-885E-4343-B460-C094EB0A5E03}"
+      DTS:DTSID="{71BCF001-09A6-421C-87E2-330C3D5BED72}"
       DTS:From="Package\Secuencia de Poblamiento al Data Mart Orbitum"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
-      DTS:To="Package\Login al LinkServer Azure" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
-      DTS:CreationName=""
-      DTS:DTSID="{9EC212D2-5019-484F-9451-84251FA46D79}"
-      DTS:From="Package\Crear Link Server Azure  de DB Orbitum Mart si no fue Registrado"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 2"
-      DTS:To="Package\Limpieza del Data Mart Orbitum" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
-      DTS:CreationName=""
-      DTS:DTSID="{E2147F40-908E-4D58-9265-73BBF1CFB7D1}"
-      DTS:From="Package\Login al LinkServer Azure"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 3"
       DTS:To="Package\Poblamiento Tabla Hecho Ventas" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
@@ -2132,17 +2082,13 @@ FROM Orden</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="388,41.6"
-          Id="Package\Crear Link Server Azure  de DB Orbitum Mart si no fue Registrado"
-          TopLeft="78.2857156189119,1.22352942892426" />
-        <NodeLayout
           Size="228,41.6"
           Id="Package\Limpieza del Data Mart Orbitum"
           TopLeft="152.000002588545,76.4705893077653" />
         <NodeLayout
           Size="233.6,41.6"
           Id="Package\Poblamiento Tabla Hecho Ventas"
-          TopLeft="154.857145494345,503.482360002327" />
+          TopLeft="149.142859682746,424.82689671434" />
         <NodeLayout
           Size="163.2,41.6"
           Id="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente"
@@ -2255,67 +2201,19 @@ FROM Orden</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="269.142859103728,42.8235294289243">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,33.647059878841"
-              Start="0,0"
-              End="0,26.147059878841">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.147059878841" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="197.6,41.6"
-          Id="Package\Login al LinkServer Azure"
-          TopLeft="180.000003065382,428.141178323818" />
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="275.257144710969,388.188237327523">
+          TopLeft="268.828573019651,388.188237327523">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,39.9529409962955"
+              EndConnector="0,36.6386593868169"
               Start="0,0"
-              End="0,32.4529409962955">
+              End="0,29.1386593868169">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.4529409962955" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="275.228574279863,469.741178323818">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,33.7411816785086"
-              Start="0,0"
-              End="0,26.2411816785086">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.2411816785086" />
+                    End="0,29.1386593868169" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2390,7 +2288,7 @@ FROM Orden</property>
     design-time-name="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="220.8,41.6"
           Id="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Cliente\Tabla Data Warehouse Cliente"
@@ -2418,7 +2316,9 @@ FROM Orden</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2449,7 +2349,7 @@ FROM Orden</property>
     design-time-name="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="235.2,41.6"
           Id="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Empleado\Tabla Data Warehouse Empleado"
@@ -2477,7 +2377,9 @@ FROM Orden</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2508,7 +2410,7 @@ FROM Orden</property>
     design-time-name="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="201.6,41.6"
           Id="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Producto\Tabla Dimension Producto"
@@ -2536,7 +2438,9 @@ FROM Orden</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2567,7 +2471,7 @@ FROM Orden</property>
     design-time-name="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Tiempo">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="217.6,41.6"
           Id="Package\Secuencia de Poblamiento al Data Mart Orbitum\Dimension Tiempo\Tabla Data Warehouse Orden"
@@ -2595,7 +2499,9 @@ FROM Orden</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

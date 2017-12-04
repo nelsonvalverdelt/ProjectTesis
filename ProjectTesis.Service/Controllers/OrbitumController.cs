@@ -6,39 +6,106 @@ namespace ProjectTesis.Service.Controllers
 {
     public class OrbitumController : ApiController
     {
-        OrbitumMartConnection db = new OrbitumMartConnection();
+        AzureOrbitumMartConnection db = new AzureOrbitumMartConnection();
 
         [Route("api/Clientes")]
-        [HttpGet]
-        public IEnumerable<Dim_Cliente> GetCliente()
+        public IHttpActionResult GetClientes()
         {
-            return db.Dim_Cliente;
+            List<ClienteCsv> listaClientes = new List<ClienteCsv>();
+
+            foreach (var item in db.Dim_Cliente)
+            {
+                listaClientes.Add(new ClienteCsv
+                {
+                    Cliente_Key = item.Cliente_Key,
+                    ClienteId = item.ClienteId,
+                    Documento = item.Documento,
+                    Nombre = item.Nombre
+                });
+            }
+            return Ok(listaClientes);
         }
+  
         [Route("api/Empleados")]
-        [HttpGet]
-        public IEnumerable<Dim_Empleado> GetEmpleado()
+        public IHttpActionResult GetEmpleados()
         {
-            return db.Dim_Empleado;
+            List<EmpleadoCsv> listaEmpleados = new List<EmpleadoCsv>();
+            foreach (var item in db.Dim_Empleado)
+            {
+                listaEmpleados.Add(new EmpleadoCsv
+                {
+                    Empleado_Key = item.Empleado_Key,
+                    EmpleadoId = item.EmpleadoId,
+                    Usuario = item.Usuario,
+                    Nombre = item.Nombre
+                });
+            }
+
+            return Ok(listaEmpleados);
         }
         [Route("api/Productos")]
-        [HttpGet]
-        public IEnumerable<Dim_Producto> GetProducto()
+        public IHttpActionResult GetProductos()
         {
-            return db.Dim_Producto;
+            List<ProductoCsv> listaProductos = new List<ProductoCsv>();
+            foreach (var item in db.Dim_Producto)
+            {
+                listaProductos.Add(new ProductoCsv
+                {
+                    Producto_Key = item.Producto_Key,
+                    ProductoId = item.ProductoId,
+                    Codigo = item.Codigo,
+                    Nombre = item.Nombre,
+                    Marca = item.Marca,
+                    Grupo = item.Grupo,
+                    SubGrupo = item.SubGrupo
+                });
+            }
+ 
+            return Ok(listaProductos);
         }
         [Route("api/Tiempos")]
-        [HttpGet]
-        public IEnumerable<Dim_Tiempo> GetTiempo()
+        public IHttpActionResult GetTiempos()
         {
-            return db.Dim_Tiempo;
+            List<TiempoCsv> listaTiempos = new List<TiempoCsv>();
+            foreach (var item in db.Dim_Tiempo)
+            {
+                listaTiempos.Add(new TiempoCsv
+                {
+                    Tiempo_Key = item.Tiempo_Key,
+                    Fecha = item.Fecha,
+                    Año = item.Año,
+                    Mes = item.Mes,
+                    Dia = item.Dia,
+                    Hora = item.Hora,
+                    Minuto = item.Minuto
+                });
+            }
+            return Ok(listaTiempos);
         }
         [Route("api/Ventas")]
-        [HttpGet]
-        public IEnumerable<Fac_Ventas> GetVentas()
+        public IHttpActionResult GetVentas()
         {
-            return db.Fac_Ventas;
+            List<VentasCsv> listaVentas = new List<VentasCsv>();
+            foreach (var item in db.Fac_Ventas)
+            {
+                listaVentas.Add(new VentasCsv
+                {
+                    Cliente_Key = item.Cliente_Key,
+                    Empleado_Key = item.Empleado_Key,
+                    Producto_Key = item.Producto_Key,
+                    Tiempo_Key = item.Tiempo_Key,
+                    Precio = item.Precio,
+                    Cantidad = item.Cantidad,
+                    Monto = item.Monto,
+                    RecargoUsoTarjeta = item.RecargoUsoTarjeta,
+                    MontoTotal = item.MontoTotal
+
+                });
+            }
+
+            return Ok(listaVentas);
         }
-            
+     
     }
 
 }

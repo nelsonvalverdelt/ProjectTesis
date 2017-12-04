@@ -13,10 +13,10 @@ namespace ProjectTesis.Service.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class OrbitumMartConnection : DbContext
+    public partial class AzureOrbitumMartConnection : DbContext
     {
-        public OrbitumMartConnection()
-            : base("name=OrbitumMartConnection")
+        public AzureOrbitumMartConnection()
+            : base("name=AzureOrbitumMartConnection")
         {
         }
     
